@@ -7,7 +7,8 @@ Authors@R: c(person("Dave", "Armstrong", role=c("aut", "cre"), email="dave@quant
              person("Chris", "Hare", role="aut"), 
              person("Ryan", "Bakker", role="aut"), 
              person("Keith", "Poole", role="ctb"), 
-             person("Howard", "Rosenthal", role="ctb"))
+             person("Howard", "Rosenthal", role="ctb"),
+             person("David", "Liao", role="ctb"))
 Description: Supports the book - Analyzing Spatial Models of Choice and Judgment in R, CRC Press (2014). 
 Depends: R(>= 3.5.0), rjags
 Imports:
