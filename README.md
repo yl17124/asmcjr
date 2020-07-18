@@ -256,4 +256,4 @@ Execution halted
 
 
 ## Reference
-For citation from this book, run `citation("asmcjr")`. For more learning resources and those who want to learn how to use computational methods to understand the latent properties of your data, please join the course [Scaling Methods for Social Science](https://essexsummerschool.com/summer-school-facts/courses/2020-course-list/3l-ideal-point-estimation-item-response-theory-and-scaling-methods/) at [2020 ESSEX SUMMER SCHOOL](https://essexsummerschool.com/). 
+For citation from this book, run `citation("asmcjr")`.
