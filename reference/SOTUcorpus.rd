@@ -89,7 +89,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/davidaarmstrong/asmcjr/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -112,12 +117,12 @@
     <p>Texts from the Presidential State of the Union addresses from 1790 to 2019</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SOTUcorpus</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>SOTUcorpus</span>)</pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A document corpus with elements <code>documents</code>, <code>metadata</code>, <code>settings</code> and <code>tokens</code>.  The <code>documents</code> data frame has the following variables.</p><dl'>
+    <p>A document corpus with elements <code>documents</code>, <code>metadata</code>, <code>settings</code> and <code>tokens</code>.  The <code>documents</code> data frame has the following variables.</p><dl>
    <dt>texts</dt><dd><p>The text of the speeches</p></dd>
    <dt>FirstName</dt><dd><p>First name of the president.</p></dd>
    <dt>President</dt><dd><p>President's last name</p></dd>
@@ -145,7 +150,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

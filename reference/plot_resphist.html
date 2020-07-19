@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DW-Nominate estimates for the House — rcx • asmcjr</title>
+<title>Alternative plotting function for Aldrich-McKelvel Results — plot_resphist • asmcjr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="DW-Nominate estimates for the House — rcx" />
-<meta property="og:description" content="A data frame with variables relating to legislator ideology" />
+<meta property="og:title" content="Alternative plotting function for Aldrich-McKelvel Results — plot_resphist" />
+<meta property="og:description" content="Uses ggplot2 to produce alternative visualizations for results of the aldmck or blackboxfunctions." />
 
 
 
@@ -108,57 +108,80 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>DW-Nominate estimates for the House</h1>
+    <h1>Alternative plotting function for Aldrich-McKelvel Results</h1>
     
-    <div class="hidden name"><code>rcx.Rd</code></div>
+    <div class="hidden name"><code>plot_resphist.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A data frame with variables relating to legislator ideology</p>
+    <p>Uses <code>ggplot2</code> to produce alternative visualizations for results of the <code>aldmck</code> or <code>blackbox</code>functions.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>rcx</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_resphist</span>(<span class='kw'>result</span>, groupVar = <span class='kw'>NULL</span>, facetVar = <span class='kw'>NULL</span>, addStim = <span class='fl'>FALSE</span>,
+    scaleDensity=<span class='fl'>TRUE</span>, weights = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"all"</span>, <span class='st'>"positive"</span>, <span class='st'>"negative"</span>),
+    xlab = <span class='kw'>NULL</span>, main = <span class='kw'>NULL</span>, ylab = <span class='kw'>NULL</span>, whichRes = <span class='kw'>NULL</span>,
+    dim = <span class='kw'>NULL</span>, <span class='kw'>...</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>result</th>
+      <td><p>An object of class <code>aldmck</code> that is the result of an Aldrich-McKelvey scaling analysis.</p></td>
+    </tr>
+    <tr>
+      <th>groupVar</th>
+      <td><p>Optional grouping variable that will paritition the observations to produce different density cuvres for <code>aldmck</code> results.</p></td>
+    </tr>
+    <tr>
+      <th>facetVar</th>
+      <td><p>An optional variable on which to facet the results</p></td>
+    </tr>
+    <tr>
+      <th>addStim</th>
+      <td><p>Logical indicating whether the stimulus locations should be added to the density plot.</p></td>
+    </tr>
+    <tr>
+      <th>scaleDensity</th>
+      <td><p>Logical indicating whether density should be scaled to represent different proportions of observations by group.</p></td>
+    </tr>
+    <tr>
+      <th>weights</th>
+      <td><p>Which observations should be used in plotting.  The default is to use all available observations.  The <code>"positive"</code> and <code>"negative"</code> options allow users to plot only those observations with either positive or negative weights, respectively.</p></td>
+    </tr>
+    <tr>
+      <th>xlab</th>
+      <td><p>Optional x-label for the plot.</p></td>
+    </tr>
+    <tr>
+      <th>main</th>
+      <td><p>Optional main title for the plot.</p></td>
+    </tr>
+    <tr>
+      <th>ylab</th>
+      <td><p>Optional y-label for the plot.</p></td>
+    </tr>
+    <tr>
+      <th>whichRes</th>
+      <td><p>For objects of class <code>blackbox</code>, an integer identifying the dimension of the solution used for plotting.  If <code>NULL</code> (the default), the algorithm chooses the solution with the smallest dimensionality that can accommodate the request.  For example, if <code>dim=2</code>, then the two-dimensional solution would be chosen if <code>whichRes</code> is <code>NULL</code>.</p></td>
+    </tr>
+    <tr>
+      <th>dim</th>
+      <td><p>For object os class <code>blackbox</code>, an integer identifying the dimension desired for plotting.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments to be passed down, currently unimplemented.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>We generated the data by doing the following:</p>
-<p><code>
-rcx.file &lt;- system.file("HL01111E21_PRES.DAT", package="asmcjr")
-rcx.fields &lt;- c("cong","id","state","dist","lstate","party","name",
-    "dwnom1","dwnom2","dwnom1bse","dwnom2bse","corrbse","LogL",
-    "nchoice","nerror","gmp")
-rcx.fieldWidths &lt;- c(4,6,3,2,9,4,12,7,7,7,7,7,12,5,6,6)
-rcx &lt;- read.fwf(file=rcx.file,widths=rcx.fieldWidths,as.is=TRUE,
-    col.names=rcx.fields)</code></p>
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <p>A <code>ggplot</code> of the stimulus locations and density of ideal points.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>A data frame with the following variables:</p><dl>
-<dt>cong</dt><dd><p>Congress</p></dd>
-<dt>id</dt><dd><p>Legislator ID</p></dd>
-<dt>state</dt><dd><p>Legislator's state (numeric code)</p></dd>
-<dt>dist</dt><dd><p>Congressional district</p></dd>
-<dt>lstate</dt><dd><p>Legislator's state (name)</p></dd>
-<dt>party</dt><dd><p>Legislator's political party</p></dd>
-<dt>name</dt><dd><p>Legislator's name</p></dd>
-<dt>dwnom1</dt><dd><p>DW-Nominate first dimension score.</p></dd>
-<dt>dwnom2</dt><dd><p>DW-Nominate second dimension score.</p></dd>
-<dt>dwnom1bse</dt><dd><p>DW-Nominate first dimension bootstrapped standard error</p></dd>
-<dt>dwnom2bse</dt><dd><p>DW-Nominate second dimension bootstrapped standard error</p></dd>
-<dt>corrbse</dt><dd><p></p></dd>
-<dt>LogL</dt><dd><p>Log-likelihood</p></dd>
-<dt>nchoice</dt><dd><p>Number of votes</p></dd>
-<dt>nerror</dt><dd><p>Number of errors</p></dd>
-<dt>gmp</dt><dd><p></p></dd>
+    <div class='dont-index'><p><code>aldmck</code></p></div>
 
-</dl>
-
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p><a href='https://voteview.com/data'>https://voteview.com/data</a></p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>rcx</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

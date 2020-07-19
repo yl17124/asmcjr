@@ -89,7 +89,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/davidaarmstrong/asmcjr/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -112,12 +117,12 @@
     <p>Respondent self-identified positions on several issues.  The workspace contains both a data frame including presidential vote and party id (<code>ANES2004_OOC</code>) and one excluding presidential vote and party id <code>ANES2004</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>ANES2004_OOC</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>ANES2004_OOC</span>)</pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with the following variables.</p><dl'>
+    <p>A data frame with the following variables.</p><dl>
    <dt>libcon</dt><dd><p>Self-placement on the liberal-conservative scale.</p></dd>
    <dt>diplomacy</dt><dd><p>Placement on intervention by diplomacy/military (1=stronly favor diplomacy, 7=strongly favor military)</p></dd>
    <dt>govtspend</dt><dd><p>Placement on government spending and services (1=government should provide fewer services, 7=government should provide more services)</p></dd>
@@ -156,7 +161,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

@@ -89,7 +89,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/davidaarmstrong/asmcjr/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -112,13 +117,13 @@
     <p>An object of class <code>rollcall</code> that contains information about legislators and votes from the 111th senate.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>hr108</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>hr108</span>)</pre>
 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>We generated the data by doing the following:</p>
-<p><code><a href='https://rdrr.io/pkg/pscl/man'>
+<p><code><a href='http://github.com/atahk/pscl'>
 library(pscl)
 hr108 &lt;- readKH("Chapter6_Examples/hou108kh.ord",
         dtl=NULL,
@@ -129,11 +134,11 @@ hr108 &lt;- readKH("Chapter6_Examples/hou108kh.ord",
         desc="108th House Roll Call Data",
         debug=FALSE)
 </a></code></p>
-<p><code>readKH()</code> requires several arguments: the location of the roll call file, <code>dtl</code> (the location of an ancillary dtl file containing information about the votes, defaults to NULL), the vote codes for <code>Yea</code>, <code>Nay</code>, <code>Missing</code>, and <code>Not In Legislature</code>, a short description of the roll call data, and <code>debug</code> (whether to print debugging information if downloading the file from the internet, defaults to FALSE). In the Poole-Rosenthal files, Yea votes are coded as 1, 2, or 3; Nay votes as 4, 5, or 6; Missing or Abstention votes as 7, 8, or 9; and those who were not in the legislature at the time of the vote as 0.  The code 1 indicates voting Yea, 2 paired Yea, 3 announced Yea; 4, announced Nay, 5 paired Nay, 6 voting Nay..</p>
+<p><code><a href='https://rdrr.io/pkg/pscl/man/readKH.html'>readKH()</a></code> requires several arguments: the location of the roll call file, <code>dtl</code> (the location of an ancillary dtl file containing information about the votes, defaults to NULL), the vote codes for <code>Yea</code>, <code>Nay</code>, <code>Missing</code>, and <code>Not In Legislature</code>, a short description of the roll call data, and <code>debug</code> (whether to print debugging information if downloading the file from the internet, defaults to FALSE). In the Poole-Rosenthal files, Yea votes are coded as 1, 2, or 3; Nay votes as 4, 5, or 6; Missing or Abstention votes as 7, 8, or 9; and those who were not in the legislature at the time of the vote as 0.  The code 1 indicates voting Yea, 2 paired Yea, 3 announced Yea; 4, announced Nay, 5 paired Nay, 6 voting Nay..</p>
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     
-<dl'>
+<dl>
 <dt>votes</dt><dd><p>A 440x1218 matrix of votes for all of the legislators.</p></dd>
 <dt>codes</dt><dd><p>A list containing the maps of numerical values to yea, nay, NIL and missing votes.</p></dd>
 
@@ -152,7 +157,7 @@ hr108 &lt;- readKH("Chapter6_Examples/hou108kh.ord",
     <p><a href='https://legacy.voteview.com/house108.htm'>https://legacy.voteview.com/house108.htm</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>hr108</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>hr108</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -168,7 +173,7 @@ hr108 &lt;- readKH("Chapter6_Examples/hou108kh.ord",
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

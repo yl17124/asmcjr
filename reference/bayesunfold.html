@@ -90,7 +90,12 @@ The method runs L-BFGS to get the target configuration." />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/davidaarmstrong/asmcjr/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -114,8 +119,8 @@ The method runs L-BFGS to get the target configuration." />
 The method runs L-BFGS to get the target configuration.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bayesunfold</span>(<span class='no'>input</span>, <span class='kw'>dims</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>nsamp</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>cred.level</span> <span class='kw'>=</span> <span class='fl'>0.9</span>,
-  <span class='kw'>slice.starts</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lbfgs"</span>, <span class='st'>"random"</span>), <span class='kw'>print.lbfgs</span><span class='kw'>=</span><span class='st'>"console"</span>, <span class='kw'>print.slice</span><span class='kw'>=</span><span class='st'>"console"</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>bayesunfold</span>(<span class='kw'>input</span>, dims = <span class='fl'>2</span>, nsamp = <span class='fl'>2000</span>, burnin = <span class='fl'>1000</span>, cred.level = <span class='fl'>0.9</span>, 
+  slice.starts = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lbfgs"</span>, <span class='st'>"random"</span>), print.lbfgs=<span class='st'>"console"</span>, print.slice=<span class='st'>"console"</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,13 +175,15 @@ The method runs L-BFGS to get the target configuration.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Bakker, Ryan and Keith T. Poole. 2013. Bayesian Metric Multidimensional Scaling. Political Analysis 21: 125-140.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Dave Armstrong, Ryan Bakker, Christopher Hare and Keith T. Poole</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>#data(ANES1968)
-#inp &lt;- ANES1968[,1:12]
-#result &lt;- bayesunfold(inp)
-#plot(b, which.res="unrotated", labels="text") + xlim(.5,2)
-</div></pre>
+    <pre class="examples"><div class='input'><span class='co'>#data(ANES1968)</span>
+<span class='co'>#inp &lt;- ANES1968[,1:12]</span>
+<span class='co'>#result &lt;- bayesunfold(inp)</span>
+<span class='co'>#plot(b, which.res="unrotated", labels="text") + xlim(.5,2)</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -192,7 +199,7 @@ The method runs L-BFGS to get the target configuration.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

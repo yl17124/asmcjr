@@ -90,7 +90,12 @@ call vote for a wnominate object." />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/davidaarmstrong/asmcjr/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -114,9 +119,9 @@ call vote for a wnominate object." />
 call vote for a <code>wnominate</code> object.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_rollcall</span>(<span class='no'>obj</span>, <span class='no'>data</span>, <span class='no'>gdat</span>, <span class='no'>rcnum</span>,
-    <span class='kw'>shapeVar</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dropNV</span><span class='kw'>=</span><span class='fl'>FALSE</span>,
-    <span class='kw'>onlyErrors</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>ptSize</span><span class='kw'>=</span><span class='fl'>4</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_rollcall</span>(<span class='kw'>obj</span>, <span class='kw'>data</span>, <span class='kw'>gdat</span>, <span class='kw'>rcnum</span>, 
+    shapeVar = <span class='kw'>NULL</span>, dropNV=<span class='fl'>FALSE</span>, 
+    onlyErrors=<span class='fl'>FALSE</span>, ptSize=<span class='fl'>4</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,33 +169,32 @@ call vote for a <code>wnominate</code> object.</p>
     <p>A <code>ggplot</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'># data(hr108)
-# library(wnominate)
-# result &lt;- wnominate(hr108, ubeta=15, uweights=0.5, dims=2, minvotes=20,
-#     lop=0.025, trials=1, polarity=c(1,5), verbose=FALSE)
-# weight &lt;-  result$weights[2]/result$weights[1] 
-# weight
-# wnom.dat &lt;- data.frame(
-#     coord1D = result$legislators$coord1D, 
-#     coord2D = result$legislators$coord2D*weight,
-#     party = result$legislators$partyCode,
-#     state = result$legislators$icpsrState)
+    <pre class="examples"><div class='input'><span class='co'># data(hr108)</span>
+<span class='co'># library(wnominate)</span>
+<span class='co'># result &lt;- wnominate(hr108, ubeta=15, uweights=0.5, dims=2, minvotes=20,</span>
+<span class='co'>#     lop=0.025, trials=1, polarity=c(1,5), verbose=FALSE)</span>
+<span class='co'># weight &lt;-  result$weights[2]/result$weights[1] </span>
+<span class='co'># weight</span>
+<span class='co'># wnom.dat &lt;- data.frame(</span>
+<span class='co'>#     coord1D = result$legislators$coord1D, </span>
+<span class='co'>#     coord2D = result$legislators$coord2D*weight,</span>
+<span class='co'>#     party = result$legislators$partyCode,</span>
+<span class='co'>#     state = result$legislators$icpsrState)</span>
 
-# wnom.dat$group &lt;- NA
-# wnom.dat$group[with(wnom.dat, which(party == 100 
-#     &amp; state %in% c(40:51, 53, 54)))] &lt;- 1
-# wnom.dat$group[with(wnom.dat, which(party == 100 
-#     &amp; state %in% c(1:39, 52, 55:82)))] &lt;- 2
-# wnom.dat$group[with(wnom.dat, which(party == 200))] &lt;- 3
-# wnom.dat$group[with(wnom.dat, which(party == 328))] &lt;- 4
-# wnom.dat$group &lt;- factor(wnom.dat$group, levels=1:4, 
-#     labels=c("Southern Dems", "Northern Dems", "Republicans", "Independents"))
+<span class='co'># wnom.dat$group &lt;- NA</span>
+<span class='co'># wnom.dat$group[with(wnom.dat, which(party == 100 </span>
+<span class='co'>#     &amp; state %in% c(40:51, 53, 54)))] &lt;- 1</span>
+<span class='co'># wnom.dat$group[with(wnom.dat, which(party == 100 </span>
+<span class='co'>#     &amp; state %in% c(1:39, 52, 55:82)))] &lt;- 2</span>
+<span class='co'># wnom.dat$group[with(wnom.dat, which(party == 200))] &lt;- 3</span>
+<span class='co'># wnom.dat$group[with(wnom.dat, which(party == 328))] &lt;- 4</span>
+<span class='co'># wnom.dat$group &lt;- factor(wnom.dat$group, levels=1:4, </span>
+<span class='co'>#     labels=c("Southern Dems", "Northern Dems", "Republicans", "Independents"))</span>
 
-# plot.rollcall(result, hr108, wnom.dat, 528, "group", TRUE) +                      
-# theme_bw() + 
-# theme(aspect.ratio=1) + 
-# xlab("First Dimension") + ylab("Second Dimension") + ggtitle("The 108th House") 
-</div></pre>
+<span class='co'># plot.rollcall(result, hr108, wnom.dat, 528, "group", TRUE) +                      </span>
+<span class='co'># theme_bw() + </span>
+<span class='co'># theme(aspect.ratio=1) + </span>
+<span class='co'># xlab("First Dimension") + ylab("Second Dimension") + ggtitle("The 108th House") </span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -206,7 +210,7 @@ call vote for a <code>wnominate</code> object.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

@@ -89,7 +89,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/davidaarmstrong/asmcjr/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -112,13 +117,13 @@
     <p>An object of class <code>rollcall</code> that contains information about legislators and votes from the the European Parliament 1979-1984.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>hr108</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>hr108</span>)</pre>
 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>We used the following code to transform the raw data in <code>rcv_ep1</code> into a <code>rollcall</code> object.</p>
-<p><code><a href='https://rdrr.io/pkg/pscl/man'>library(pscl)</a></code></p>
+<p><code><a href='http://github.com/atahk/pscl'>library(pscl)</a></code></p>
 <p><code><a href='https://rdrr.io/r/utils/data.html'>data(rcv_ep1)</a></code></p>
 <p><code>rc &lt;- rollcall(data=rcv_ep1[,6:ncol(rcv_ep1)],</code></p>
 <p><code>        yea=1,</code></p>
@@ -131,11 +136,11 @@
 <p><code>        vote.data=NULL,</code></p>
 <p><code>        desc="1st European Parliament (1979-1984) Roll Call Data")</code></p>
 
-<p>The arguments required by the <code>rollcall()</code> function are similar to those in <code>readKH()</code>, except that the legislator and vote-specific variables must be specified. First, <code>data</code> is set as the matrix of roll call votes (the sixth through final columns of the <code>rcv\_ep1</code> dataset). The numeric codes are then set for <code>yea</code>, <code>nay</code>, <code>missing</code>, and <code>notInLegis</code> votes. <code>legis.names</code> is a vector of the legislator names. <code>vote.names</code> is a vector of the roll call vote names (we simply use the column names of the votes). <code>legis.data</code> is a vector or matrix of legislator-specific variables. In this example, we have four such variables: <code>MEPID</code>, <code>MS</code>, <code>NP</code>, and <code>EPG</code> in the first and second through fifth columns. We want to omit the legislator names (in the second column), so we use the command: <code>rcv\_ep1[,1:5][,-2]</code>. <code>vote.data</code> is a vector or matrix of vote-specific variables (for example, roll call vote descriptions). We leave this parameter <code>NULL</code> since we have no such variable(s). Finally, <code>desc</code> is a short description of the roll call voting data.</p>
+<p>The arguments required by the <code><a href='https://rdrr.io/pkg/pscl/man/rollcall.html'>rollcall()</a></code> function are similar to those in <code><a href='https://rdrr.io/pkg/pscl/man/readKH.html'>readKH()</a></code>, except that the legislator and vote-specific variables must be specified. First, <code>data</code> is set as the matrix of roll call votes (the sixth through final columns of the <code>rcv\_ep1</code> dataset). The numeric codes are then set for <code>yea</code>, <code>nay</code>, <code>missing</code>, and <code>notInLegis</code> votes. <code>legis.names</code> is a vector of the legislator names. <code>vote.names</code> is a vector of the roll call vote names (we simply use the column names of the votes). <code>legis.data</code> is a vector or matrix of legislator-specific variables. In this example, we have four such variables: <code>MEPID</code>, <code>MS</code>, <code>NP</code>, and <code>EPG</code> in the first and second through fifth columns. We want to omit the legislator names (in the second column), so we use the command: <code>rcv\_ep1[,1:5][,-2]</code>. <code>vote.data</code> is a vector or matrix of vote-specific variables (for example, roll call vote descriptions). We leave this parameter <code>NULL</code> since we have no such variable(s). Finally, <code>desc</code> is a short description of the roll call voting data.</p>
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     
-<dl'>
+<dl>
 <dt>votes</dt><dd><p>A 548x886 matrix of votes for all of the legislators.</p></dd>
 <dt>codes</dt><dd><p>A list containing the maps of numerical values to yea, nay, NIL and missing votes.</p></dd>
 
@@ -154,7 +159,7 @@
     <p><a href='http://personal.lse.ac.uk/hix/HixNouryRolandEPdata.htm'>http://personal.lse.ac.uk/hix/HixNouryRolandEPdata.htm</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rc_ep</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>rc_ep</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -170,7 +175,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

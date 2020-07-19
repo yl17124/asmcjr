@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DW-Nominate estimates for the House — rcx • asmcjr</title>
+<title>Alternative plotting function for Blackbox Scaling Results — plot_blackbox • asmcjr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="DW-Nominate estimates for the House — rcx" />
-<meta property="og:description" content="A data frame with variables relating to legislator ideology" />
+<meta property="og:title" content="Alternative plotting function for Blackbox Scaling Results — plot_blackbox" />
+<meta property="og:description" content="Uses ggplot2 to produce alternative visualizations for results of the blackbox function.  Makes a scatterplot of respondents on the estimated latent dimensions." />
 
 
 
@@ -108,57 +108,83 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>DW-Nominate estimates for the House</h1>
+    <h1>Alternative plotting function for Blackbox Scaling Results</h1>
     
-    <div class="hidden name"><code>rcx.Rd</code></div>
+    <div class="hidden name"><code>plot_blackbox.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A data frame with variables relating to legislator ideology</p>
+    <p>Uses <code>ggplot2</code> to produce alternative visualizations for results of the <code>blackbox</code> function.  Makes a scatterplot of respondents on the estimated latent dimensions.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>rcx</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_blackbox</span>(<span class='kw'>result</span>, <span class='kw'>dims</span>, whichRes = <span class='kw'>NULL</span>, groupVar = <span class='kw'>NULL</span>, issueVector = <span class='kw'>NULL</span>,
+    data = <span class='kw'>NULL</span>, missing = <span class='kw'>NULL</span>, rug = <span class='fl'>FALSE</span>, xlab = <span class='kw'>NULL</span>, main = <span class='kw'>NULL</span>,
+    ylab = <span class='kw'>NULL</span>, nudgeX = <span class='kw'>NULL</span>, nudgeY = <span class='kw'>NULL</span>, <span class='kw'>...</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>result</th>
+      <td><p>An object of class <code>blackbox</code> that is the result of an Blackbox scaling analysis.</p></td>
+    </tr>
+    <tr>
+      <th>dims</th>
+      <td><p>A numeric vector of two values giving the dimension numbers to be plotted.  <code><a href='https://rdrr.io/r/base/c.html'>c(1,2)</a></code> will plot the first two dimensions.</p></td>
+    </tr>
+    <tr>
+      <th>whichRes</th>
+      <td><p>Identifies the dimensionality of the result to be used.  For example, if you set <code>dims=c(1,2)</code>, but you estimated a three-dimensional solution, you could use either the two-dimensional or three-dimensional solution for the plot.  If <code>whichRes</code> is <code>NULL</code> (the default), the smallest dimesnsionality that will accommodate the request is used.</p></td>
+    </tr>
+    <tr>
+      <th>groupVar</th>
+      <td><p>Optional grouping variable that will paritition the observations to produce different density cuvres for <code>aldmck</code> results.</p></td>
+    </tr>
+    <tr>
+      <th>issueVector</th>
+      <td><p>Either column names or numbers of issues whose normal vectors should be plotted in the space along with respondents.</p></td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td><p>Data frame used to estimate the solution.  Only required if you specify something other than <code>NULL</code> for <code>issueVector</code>.</p></td>
+    </tr>
+    <tr>
+      <th>missing</th>
+      <td><p>A vector of values that will be recoded to missing in the analysis.</p></td>
+    </tr>
+    <tr>
+      <th>rug</th>
+      <td><p>Logical indicating whether marginal rug-plots should be included.</p></td>
+    </tr>
+    <tr>
+      <th>xlab</th>
+      <td><p>Optional x-label for the plot.</p></td>
+    </tr>
+    <tr>
+      <th>main</th>
+      <td><p>Optional main title for the plot.</p></td>
+    </tr>
+    <tr>
+      <th>ylab</th>
+      <td><p>Optional y-label for the plot.</p></td>
+    </tr>
+    <tr>
+      <th>nudgeX, nudgeY</th>
+      <td><p>Factor by which text labels will be nudged in the x- and y- dimensions.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments to be passed down, currently unimplemented.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>We generated the data by doing the following:</p>
-<p><code>
-rcx.file &lt;- system.file("HL01111E21_PRES.DAT", package="asmcjr")
-rcx.fields &lt;- c("cong","id","state","dist","lstate","party","name",
-    "dwnom1","dwnom2","dwnom1bse","dwnom2bse","corrbse","LogL",
-    "nchoice","nerror","gmp")
-rcx.fieldWidths &lt;- c(4,6,3,2,9,4,12,7,7,7,7,7,12,5,6,6)
-rcx &lt;- read.fwf(file=rcx.file,widths=rcx.fieldWidths,as.is=TRUE,
-    col.names=rcx.fields)</code></p>
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <p>A <code>ggplot</code> of the stimulus locations and density of ideal points.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>A data frame with the following variables:</p><dl>
-<dt>cong</dt><dd><p>Congress</p></dd>
-<dt>id</dt><dd><p>Legislator ID</p></dd>
-<dt>state</dt><dd><p>Legislator's state (numeric code)</p></dd>
-<dt>dist</dt><dd><p>Congressional district</p></dd>
-<dt>lstate</dt><dd><p>Legislator's state (name)</p></dd>
-<dt>party</dt><dd><p>Legislator's political party</p></dd>
-<dt>name</dt><dd><p>Legislator's name</p></dd>
-<dt>dwnom1</dt><dd><p>DW-Nominate first dimension score.</p></dd>
-<dt>dwnom2</dt><dd><p>DW-Nominate second dimension score.</p></dd>
-<dt>dwnom1bse</dt><dd><p>DW-Nominate first dimension bootstrapped standard error</p></dd>
-<dt>dwnom2bse</dt><dd><p>DW-Nominate second dimension bootstrapped standard error</p></dd>
-<dt>corrbse</dt><dd><p></p></dd>
-<dt>LogL</dt><dd><p>Log-likelihood</p></dd>
-<dt>nchoice</dt><dd><p>Number of votes</p></dd>
-<dt>nerror</dt><dd><p>Number of errors</p></dd>
-<dt>gmp</dt><dd><p></p></dd>
+    <div class='dont-index'><p><code>blackbox</code></p></div>
 
-</dl>
-
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p><a href='https://voteview.com/data'>https://voteview.com/data</a></p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>rcx</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
