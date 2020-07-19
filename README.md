@@ -4,7 +4,7 @@
 ![R-CMD-check](https://github.com/yl17124/asmcjr/workflows/R-CMD-check/badge.svg?branch=master&event=check_run)
 [![codecov](https://codecov.io/gh/yl17124/asmcjr/branch/master/graph/badge.svg)](https://codecov.io/gh/yl17124/asmcjr)
 
-This package supports the book ["Analyzing Spatial Models of Choice and Judgment with R"](https://www.routledge.com/Analyzing-Spatial-Models-of-Choice-and-Judgment/II-Bakker-Carroll-Hare-Poole-Rosenthal/p/book/9781138715332).  In its second edition, much of the R code has been streamlined. This package contains all of the data and functions to replicate the analyses in the book. 
+This package supports the book ["2nd Edition Analyzing Spatial Models of Choice and Judgment "](https://www.routledge.com/Analyzing-Spatial-Models-of-Choice-and-Judgment/II-Bakker-Carroll-Hare-Poole-Rosenthal/p/book/9781138715332).  In its second edition, much of the R code has been streamlined. This package contains all of the data and functions to replicate the analyses in the book. 
 
 <br />
 
