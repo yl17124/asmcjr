@@ -4,15 +4,15 @@ home:
   title: Analyzing Spatial Models of Choice and Judgment with R
 
 authors:
-  David A. Armstrong, II:
+  Dave Armstrong:
     href: https://github.com/davidaarmstrong
   Ryan Bakker:
     href: https://www.essex.ac.uk/people/bakke28107/ryan-bakker
   Royce Carroll:
     href: https://www.essex.ac.uk/people/carro40801/royce-carroll
-  Christopher Hare:
+  Chris Hare:
     href: https://www.christopherdhare.com/
-  Keith T. Poole: 
+  Keith Poole: 
     href: https://spia.uga.edu/faculty-member/keith-poole/
   Howard Rosenthal:
     href: https://as.nyu.edu/content/nyu-as/as/faculty/howard-l-rosenthal.html
@@ -25,17 +25,7 @@ development:
   mode: auto
 
 
-articles:
-- title: Customise your site
-  navbar: ~
-  contents:
-  - pkgdown
-  - linking
-  - search
-  - metadata
-- title: Testing
-  desc: >
-    These articles are used to test various pkgdown features that can not
-    easily be tested automatically.
-  contents:
-  - starts_with("test")
+news:
+ releases:
+ - text: "asmcjr 1.0.0"
+   href: https://yl17124.github.io/asmcjr

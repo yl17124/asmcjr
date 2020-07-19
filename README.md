@@ -6,8 +6,9 @@
 
 This package supports the book ["Analyzing Spatial Models of Choice and Judgment with R"](https://www.routledge.com/Analyzing-Spatial-Models-of-Choice-and-Judgment/II-Bakker-Carroll-Hare-Poole-Rosenthal/p/book/9781138715332).  In its second edition, much of the R code has been streamlined. This package contains all of the data and functions to replicate the analyses in the book. 
 
+<br />
 
-<img src="https://raw.githack.com/yl17124/asmcjr/master/images/book_image.jpg" width="140" align="center" /> <br /> 
+<img src="https://raw.githack.com/yl17124/asmcjr/master/images/book_image.jpg" width="240" align="center" />  
 
 
 ## Installation 
@@ -66,7 +67,7 @@ str(example_result_france)
 ```r
 library(ggplot2)
 library(asmcjr)
-example_result_graph <- ggplot.resphist(example_result_france, addStim=TRUE, weights="negative", xlab = "Left-Right") +
+example_result_graph <- ggplot.resphist(example_result_france, addStim = TRUE, weights = "negative", xlab = "Left-Right") +
     theme(legend.position = "bottom", aspect.ratio = 1) +
     guides(shape = guide_legend(override.aes = list(size = 4),nrow = 3)) +
     labs(shape = "Party", colour = "Party")
