@@ -1,0 +1,30 @@
+useDynLib(asmcjr, .registration=TRUE)
+exportPattern("^[[:alpha:]]+")
+import(ggplot2)
+import(boot)
+import(basicspace)
+import(rjags)
+
+importFrom("MCMCpack", "procrustes")
+importFrom("plyr", "aaply")
+importFrom("tibble", "as_tibble", "add_column")
+importFrom("grDevices", "rgb")
+importFrom("graphics", "lines", "symbols")
+importFrom("stats", "density", "na.omit", "quantile", "rnorm", 
+           "sd", "runif", "end", "qnorm", "start", "window", "time")
+importFrom("utils", "combn", "globalVariables")
+importFrom("MASS", "polr")
+importFrom("smacof", "smacofRect")
+importFrom("ellipse", "ellipse")
+importFrom("coda", "as.mcmc.list", "geweke.diag", "nchain", "nvar", 
+           "varnames", "chanames", "niter", "mcpar", "mcmc")
+
+
+S3method(plot, aldmck_ci)
+S3method(plot, mlsmu6)
+S3method(plot, bayesunfold)
+S3method(print, aldmck_ci)
+S3method(start, mcmc.list)
+S3method(end, mcmc.list)
+S3method(window, mcmc.list)
+S3method(window, mcmc)

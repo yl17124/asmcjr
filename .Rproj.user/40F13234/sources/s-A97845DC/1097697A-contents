@@ -1,0 +1,11 @@
+pandoc: 2.7.3
+pkgdown: 1.5.1
+pkgdown_sha: ~
+articles:
+  asmcjr 2: asmcjr 2.html
+  asmcjr: asmcjr.html
+last_built: 2020-07-18T23:32Z
+urls:
+  reference: http://yl17124.github.io/asmcjr/reference
+  article: http://yl17124.github.io/asmcjr/articles
+

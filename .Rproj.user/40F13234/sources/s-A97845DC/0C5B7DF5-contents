@@ -1,0 +1,512 @@
+mutate(日期 = year(日期)) %>%
+filter(日期 == year) %>%
+reshape2::dcast(. , 立委姓名 ~ 表決編號, fun.aggregate = function(x) as.numeric(paste(x, collapse = "-")), value.var = "投票立場編號") %>%
+rename(legis.names = 立委姓名)
+### pks require:pscl, dplyr, emIRT
+rc <- convertRC(rollcall(dataframesDcasted[2:ncol(dataframesDcasted)],
+yea = 1 , nay = 2, notInLegis = c(0,3,4,5), missing =NA, legis.names = dataframesDcasted$legis.names, vote.names = dataframesDcasted[2:ncol(dataframesDcasted)]))
+p <- makePriors(rc$n, rc$m, 1)
+s <- getStarts(rc$n, rc$m, 1)
+result.binIRT <-binIRT(.rc = rc, .starts = s, .priors = p, .control = {list(threads = 10, maxit = 100, verbose = FALSE, thresh = 1e-6)},.anchor_subject = .anchor_subject)
+dataframesDcasted["mean.x"] <- as.vector(t(result.binIRT$means$x))
+dataframesDcasted["vars.x"] <- as.vector(t(result.binIRT$vars$x))
+### pks require:dplyr
+### This step is to recode the pary ID
+partyLabels <- distinct(df_3[c("立委姓名", "黨籍")] ,立委姓名, .keep_all = TRUE) %>%
+mutate(黨籍 = dplyr:: recode(黨籍,
+中國國民黨 = "K",   # KMT
+民主進步黨 = "D",   # DPP
+親民黨 = "P",       # PFP
+新黨 = "k2",        # NP
+台灣團結聯盟 = "T", # TSU
+時代力量 = "G",     # NPP
+建國黨 ="O6",       # TIP
+民主聯盟 = "O5",    # DA
+無黨團結聯盟 = "N", # NPSU
+新國家連線 = "O4",
+無黨籍 = "O1",
+台灣吾黨 = "O2",     #TNOP
+非政黨聯盟 = "N" ,
+不適用 = NULL,
+無 = NULL)) %>%
+rename(legis.names = 立委姓名 , party = 黨籍)
+results.main<- dataframesDcasted[c("legis.names","mean.x","vars.x")] %>%
+left_join(partyLabels, by = "legis.names")
+results.main["year"] <- year
+results.main["session"] <- session
+return(results.main)
+}
+binaryIRT.CalculationSession <- function(df_1, df_2, df_3, .anchor_subject, session,... ){
+### pks require: tidyverse(dplyr), reshape2
+dataframesDcasted <- df_1 %>%
+left_join(df_2[c("表決編號", "日期")], by = "表決編號") %>%
+mutate(日期 = year(日期)) %>%
+reshape2::dcast(. , 立委姓名 ~ 表決編號, fun.aggregate = function(x) as.numeric(paste(x, collapse = "-")), value.var = "投票立場編號") %>%
+rename(legis.names = 立委姓名)
+### pks require:pscl, dplyr, emIRT
+rc <- convertRC(rollcall(dataframesDcasted[2:ncol(dataframesDcasted)],
+yea = 1 , nay = 2, notInLegis = c(0,3,4,5), missing =NA, legis.names = dataframesDcasted$legis.names, vote.names = dataframesDcasted[2:ncol(dataframesDcasted)]))
+p <- makePriors(rc$n, rc$m, 1)
+s <- getStarts(rc$n, rc$m, 1)
+result.binIRT <-binIRT(.rc = rc, .starts = s, .priors = p, .control = {list(threads = 10, maxit = 100, verbose = FALSE, thresh = 1e-6)},.anchor_subject = .anchor_subject)
+dataframesDcasted["mean.x"] <- as.vector(t(result.binIRT$means$x))
+dataframesDcasted["vars.x"] <- as.vector(t(result.binIRT$vars$x))
+### This step is to recode the pary ID
+partyLabels <- distinct(df_3[c("立委姓名", "黨籍")] ,立委姓名, .keep_all = TRUE) %>%
+mutate(黨籍 = dplyr:: recode(黨籍,
+中國國民黨 = "K",   # KMT
+民主進步黨 = "D",   # DPP
+親民黨 = "P",       # PFP
+新黨 = "k2",        # NP
+台灣團結聯盟 = "T", # TSU
+時代力量 = "G",     # NPP
+建國黨 ="O6",       # TIP
+民主聯盟 = "O5",    # DA
+無黨團結聯盟 = "N", # NPSU
+新國家連線 = "O4",
+無黨籍 = "O1",
+台灣吾黨 = "O2",     #TNOP
+非政黨聯盟 = "N" ,
+不適用 = NULL,
+無 = NULL)) %>%
+rename(legis.names = 立委姓名 , party = 黨籍)
+results.main<- dataframesDcasted[c("legis.names","mean.x","vars.x")] %>%
+left_join(partyLabels, by = "legis.names")
+results.main["session"] <- session
+return(results.main)
+}
+esitmatesPlot <- function(estimates, majorParties, unit) {
+if (majorParties==TRUE) {
+if (unit=="year") {ggplot(subset(estimates, party == "K"| party == "D"), aes(x=mean.x, y= as.factor(year), color=party, point_color=party, fill=party)) +
+geom_density_ridges(jittered_points = TRUE, scale = .6, rel_min_height = .02,alpha = 0.45, point_shape = "|", point_size = 2, size = 0.5, position = position_points_jitter(height = 0)) +
+scale_y_discrete(expand = c(.01, 0)) +
+scale_x_continuous(expand = c(0.1, 0.1),limits = c(-3, 3)) +
+scale_fill_manual(values = c("#00b300", "#0000cd"), labels = c(K = "Kuomintang (Chinese Nationalist Party)", D = "Democratic Progress Party")) +
+scale_color_manual(values = c("#00b300", "#0000cd"), guide = "none") +
+scale_discrete_manual("point_color", values = c("#00b300", "#1a1aff"), guide = "none") +
+guides(fill = guide_legend(override.aes = list(fill = c("#00b300", "#1a1aff"), color = NA, point_color = NA))) +
+labs(x = TeX("point estimates for the legislator ideal points $\\x_{i}"),
+caption = "Source: The Center of Legislative Study| Soochow University | Taiwan",
+y = "Year",
+title = "Binary IRT Estimation via EM algorithms  of an Ideal Point Model \n for Roll Call Votes: Taiwan Legislative Yuan (1992 - 2016)",
+subtitle = "Two Majority Parties: KMT vs. DPP") +
+theme_ridges(center = TRUE) +
+theme(legend.position = "bottom",
+legend.justification = "center",
+legend.background = element_blank(),
+legend.key = element_blank(),
+legend.title = element_blank(),
+legend.text = element_text(size= 12 ,vjust = 0.5,family ="Trebuchet MS", face = "bold")) +
+theme(panel.grid.major.y = element_line(colour = "grey60", linetype = "blank")) +
+theme(axis.text = element_text(size=17, family ="Trebuchet MS", face = "bold"),
+axis.title = element_text(size = 17, family ="Trebuchet MS", face = "bold"),
+axis.text.x = element_text(size = 17, family ="Trebuchet MS",face = "bold"),
+axis.text.y = element_text(size = 17, family ="Trebuchet MS",face = "bold"),
+axis.title.x = element_text(family ="Trebuchet MS", vjust = -7,size = 17, face = "bold"),
+axis.title.y = element_text(family ="Trebuchet MS", size = 17, face = "bold")) +
+theme(plot.title = element_text(hjust = 0.5, size = 30,family = "Trebuchet MS", face = "bold"),
+plot.subtitle = element_text(hjust = 0, vjust = 0, face = "bold",family = "Trebuchet MS", size = 15),
+plot.caption = element_text(family = "Trebuchet MS", size = 12, face = "bold")) +
+annotate("text", x = 2, y = factor(2013), label = "Electoral System: \n Single Member Districts", family="Trebuchet MS", size=7, colour = "grey16",fontface = "italic") +
+annotate("text", x = 2, y = factor(1998), label = "Electoral System: \n Multi-Member Districts", family="Trebuchet MS", size=7, colour = "grey16",fontface = "italic")+
+annotate("rect", xmin =-Inf , xmax = Inf, ymin = factor(2008), ymax = Inf, alpha= 0.1, fill = "blue") +
+annotate("rect", xmin =-Inf , xmax = Inf, ymin = -Inf , ymax = factor(2008), alpha= 0.08, fill = "grey") }
+else if (unit == "session"){ggplot(subset(estimates, party == "K"| party == "D"), aes(x=mean.x, y= as.factor(session), color=party, point_color=party, fill=party)) +
+geom_density_ridges(jittered_points = TRUE, scale = .6, rel_min_height = .02,alpha = 0.45, point_shape = "|", point_size = 2, size = 0.5, position = position_points_jitter(height = 0)) +
+scale_y_discrete(expand = c(.01, 0)) +
+scale_x_continuous(expand = c(0.1, 0.1),limits = c(-3, 3)) +
+scale_fill_manual(values = c("#00b300", "#0000cd"), labels = c(K = "Kuomintang (Chinese Nationalist Party)", D = "Democratic Progress Party")) +
+scale_color_manual(values = c("#00b300", "#0000cd"), guide = "none") +
+scale_discrete_manual("point_color", values = c("#00b300", "#1a1aff"), guide = "none") +
+guides(fill = guide_legend(override.aes = list(fill = c("#00b300", "#1a1aff"), color = NA, point_color = NA)))+
+labs(x = TeX("point estimates for the legislator ideal points $\\x_{i}"),
+caption = "Source: The Center of Legislative Study| Soochow University | Taiwan",
+y = "Year",
+title = "Binary IRT Estimation via EM algorithms  of an Ideal Point Model \n for Roll Call Votes: Taiwan Legislative Yuan (2nd - 8th Sessions)",
+subtitle = "Two Majority Parties: KMT vs. DPP") +
+theme_ridges(center = TRUE) +
+theme(legend.position = "bottom",
+legend.justification = "center",
+legend.background = element_blank(),
+legend.key = element_blank(),
+legend.title = element_blank(),
+legend.text = element_text(size= 12 ,vjust = 0.5,family ="Trebuchet MS", face = "bold")) +
+theme(panel.grid.major.y = element_line(colour = "grey60", linetype = "blank")) +
+theme(axis.text = element_text(size=17, family ="Trebuchet MS", face = "bold"),
+axis.title = element_text(size = 17, family ="Trebuchet MS", face = "bold"),
+axis.text.x = element_text(size = 17, family ="Trebuchet MS",face = "bold"),
+axis.text.y = element_text(size = 17, family ="Trebuchet MS",face = "bold"),
+axis.title.x = element_text(family ="Trebuchet MS", vjust = -7,size = 17, face = "bold"),
+axis.title.y = element_text(family ="Trebuchet MS", size = 17, face = "bold")) +
+theme(plot.title = element_text(hjust = 0.5, size = 30,family = "Trebuchet MS", face = "bold"),
+plot.subtitle = element_text(hjust = 0, vjust = 0, face = "bold",family = "Trebuchet MS", size = 15),
+plot.caption = element_text(family = "Trebuchet MS", size = 12, face = "bold"))+
+annotate("text", x = 2, y = factor("8th Session"), label = "Electoral System: \n Single-Member Districts", family="Trebuchet MS", size=7, colour = "grey16",fontface = "italic") +
+annotate("text", x = 2, y = factor("4th Session"), label = "Electoral System: \n  Multi-Members Districs", family="Trebuchet MS", size=7, colour = "grey16",fontface = "italic") +
+annotate("rect", xmin =-Inf , xmax = Inf, ymin = factor("7th Session"), ymax = Inf, alpha= 0.08, fill = "blue") +
+annotate("rect", xmin =-Inf , xmax = Inf, ymin = -Inf , ymax = factor("7th Session"), alpha= 0.1, fill = "grey")}}
+else if (majorParties == FALSE) {
+if (unit=="year") {ggplot(estimates, aes(x=mean.x, y= as.factor(year), color=party, point_color=party, fill=party)) +
+geom_density_ridges(jittered_points = TRUE, scale = .6, rel_min_height = .02,alpha = 0.5, point_shape = "|", point_size = 2, size = 0.5, position = position_points_jitter(height = 0)) +
+scale_y_discrete(expand = c(.01, 0)) +
+scale_x_continuous(expand = c(0.1, 0.1),limits = c(-3, 3)) +
+scale_fill_manual(values = c("#00ce00", "#0000cd","#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a","#003500"),
+labels = c(K = "Kuomintang (Chinese Nationalist Party)",
+D = "Democratic Progress Party",
+k2 = "New Party",
+`T` = "Taiwan Solitary Union",
+N = "Non-Partisan Solidarity Union",
+O1 = "Non Partisan",
+O5 = "Democratic Alliance",
+P = "People First Party")) +
+scale_color_manual(values = c("#00ce00", "#0000cd","#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a", "#003500"), guide = "none") +
+scale_discrete_manual("point_color", values = c("#00ce00", "#0000cd", "#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a", "#003500"), guide = "none") +
+guides(fill = guide_legend(override.aes = list(fill = c("#00ce00", "#0000cd", "#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a", "#003500"), color = NA, point_color = NA)))+
+labs(x = TeX("point estimates for the legislator ideal points $\\x_{i}"),
+y = "Year",
+caption = "Source: The Center of Legislative Study| Soochow University | Taiwan",
+title = "Binary IRT Estimation via EM algorithms  of an Ideal Point Model \n for Roll Call Votes: Taiwan Legislative Yuan (1992 - 2016)",
+subtitle = "All Parties Included")+
+theme_ridges(center = TRUE) +
+theme(legend.position = "bottom",
+legend.justification = "center",
+legend.background = element_blank(),
+legend.key = element_blank(),
+legend.title = element_blank(),
+legend.text = element_text(size= 12 ,vjust = 0.5,family ="Trebuchet MS", face = "bold")) +
+theme(panel.grid.major.y = element_line(colour = "grey60", linetype = "blank")) +
+theme(axis.text = element_text(size=17, family ="Trebuchet MS", face = "bold"),
+axis.title = element_text(size = 17, family ="Trebuchet MS", face = "bold"),
+axis.text.x = element_text(size = 17, family ="Trebuchet MS",face = "bold"),
+axis.text.y = element_text(size = 17, family ="Trebuchet MS",face = "bold"),
+axis.title.x = element_text(family ="Trebuchet MS", vjust = -7,size = 17, face = "bold"),
+axis.title.y = element_text(family ="Trebuchet MS", size = 17, face = "bold")) +
+theme(plot.title = element_text(hjust = 0.5, size = 30,family = "Trebuchet MS", face = "bold"),
+plot.subtitle = element_text(hjust = 0, vjust = 0, face = "bold",family = "Trebuchet MS", size = 15),
+plot.caption = element_text(family = "Trebuchet MS", size = 12, face = "bold"))+
+annotate("text", x = 2, y = factor(2013), label = "Electoral System: \n Single Member Districts", family="Trebuchet MS", size=7, colour = "grey16",fontface = "italic") +
+annotate("text", x = 2, y = factor(1998), label = "Electoral System: \n Multi-Member Districts", family="Trebuchet MS", size=7, colour = "grey16",fontface = "italic") +
+annotate("rect", xmin =-Inf , xmax = Inf, ymin = factor(2008), ymax = Inf, alpha= 0.1, fill = "blue") +
+annotate("rect", xmin =-Inf , xmax = Inf, ymin = -Inf , ymax = factor(2008), alpha= 0.08, fill = "grey") }
+else if (unit=="session"){ggplot(estimates, aes(x=mean.x, y= as.factor(session), color=party, point_color=party, fill=party)) +
+geom_density_ridges(jittered_points = TRUE, scale = .6, rel_min_height = .02,alpha = 0.5, point_shape = "|", point_size = 2, size = 0.5, position = position_points_jitter(height = 0)) +
+scale_y_discrete(expand = c(.01, 0)) +
+scale_x_continuous(expand = c(0.1, 0.1),limits = c(-3, 3)) +
+scale_fill_manual(values = c("#00ce00", "#0000cd","#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a","#003500"),
+labels = c(K = "Kuomintang (Chinese Nationalist Party)",
+D = "Democratic Progress Party",
+k2 = "New Party",
+`T` = "Taiwan Solitary Union",
+N = "Non-Partisan Solidarity Union",
+O1 = "Non Partisan",
+O5 = "Democratic Alliance",
+P = "People First Party")) +
+scale_color_manual(values = c("#00ce00", "#0000cd","#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a", "#003500"), guide = "none") +
+scale_discrete_manual("point_color", values = c("#00ce00", "#0000cd", "#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a", "#003500"), guide = "none") +
+guides(fill = guide_legend(override.aes = list(fill = c("#00ce00", "#0000cd", "#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a", "#003500"), color = NA, point_color = NA)))+
+labs(x = TeX("point estimates for the legislator ideal points $\\x_{i}"),
+y = "Year",
+caption = "Source: The Center of Legislative Study| Soochow University | Taiwan",
+title = "Binary IRT Estimation via EM algorithms  of an Ideal Point Model \n for Roll Call Votes: Taiwan Legislative Yuan ((2nd - 8th Sessions)",
+subtitle = "All Parties Included") +
+theme_ridges(center = TRUE) +
+theme(legend.position = "bottom",
+legend.justification = "center",
+legend.background = element_blank(),
+legend.key = element_blank(),
+legend.title = element_blank(),
+legend.text = element_text(size= 12 ,vjust = 0.5,family ="Trebuchet MS", face = "bold")) +
+theme(panel.grid.major.y = element_line(colour = "grey60", linetype = "blank")) +
+theme(axis.text = element_text(size=17, family ="Trebuchet MS", face = "bold"),
+axis.title = element_text(size = 17, family ="Trebuchet MS", face = "bold"),
+axis.text.x = element_text(size = 17, family ="Trebuchet MS",face = "bold"),
+axis.text.y = element_text(size = 17, family ="Trebuchet MS",face = "bold"),
+axis.title.x = element_text(family ="Trebuchet MS", vjust = -7,size = 17, face = "bold"),
+axis.title.y = element_text(family ="Trebuchet MS", size = 17, face = "bold")) +
+theme(plot.title = element_text(hjust = 0.5, size = 30,family = "Trebuchet MS", face = "bold"),
+plot.subtitle = element_text(hjust = 0, vjust = 0, face = "bold",family = "Trebuchet MS", size = 15),
+plot.caption = element_text(family = "Trebuchet MS", size = 12, face = "bold"))+
+annotate("text", x = 2, y = factor("8th Session"), label = "Electoral System: \n Single-Member Districts", family="Trebuchet MS", size=7, colour = "grey16",fontface = "italic") +
+annotate("text", x = 2, y = factor("4th Session"), label = "Electoral System: \n  Multi-Members Districs", family="Trebuchet MS", size=7, colour = "grey16",fontface = "italic") +
+annotate("rect", xmin =-Inf , xmax = Inf, ymin = factor("7th Session"), ymax = Inf, alpha= 0.08, fill = "blue") +
+annotate("rect", xmin =-Inf , xmax = Inf, ymin = -Inf , ymax = factor("7th Session"), alpha= 0.1, fill = "grey") }}
+}
+esitmatesPlot2 <- function(estimates, majorParties, unit) {
+if (majorParties==TRUE) {
+if (unit=="year") {
+g <- ggplot(subset(estimates, party == "K"| party == "D"), aes(x=mean.x, y= as.factor(year), color=party, point_color=party, fill=party)) +
+geom_density_ridges(jittered_points = TRUE, scale = .6, rel_min_height = .02,alpha = 0.45, point_shape = "|", point_size = 2, size = 0.5, position = position_points_jitter(height = 0)) +
+scale_y_discrete(expand = c(.01, 0)) +
+scale_x_continuous(expand = c(0.1, 0.1),limits = c(-3, 3)) +
+scale_fill_manual(values = c("#00b300", "#0000cd"), labels = c(K = "Kuomintang (Chinese Nationalist Party)", D = "Democratic Progress Party")) +
+scale_color_manual(values = c("#00b300", "#0000cd"), guide = "none") +
+scale_discrete_manual("point_color", values = c("#00b300", "#1a1aff"), guide = "none") +
+guides(fill = guide_legend(override.aes = list(fill = c("#00b300", "#1a1aff"), color = NA, point_color = NA)))}
+else if (unit == "session"){
+g <- ggplot(subset(estimates, party == "K"| party == "D"), aes(x=mean.x, y= as.factor(session), color=party, point_color=party, fill=party)) +
+geom_density_ridges(jittered_points = TRUE, scale = .6, rel_min_height = .02,alpha = 0.45, point_shape = "|", point_size = 2, size = 0.5, position = position_points_jitter(height = 0)) +
+scale_y_discrete(expand = c(.01, 0)) +
+scale_x_continuous(expand = c(0.1, 0.1),limits = c(-3, 3)) +
+scale_fill_manual(values = c("#00b300", "#0000cd"), labels = c(K = "Kuomintang (Chinese Nationalist Party)", D = "Democratic Progress Party")) +
+scale_color_manual(values = c("#00b300", "#0000cd"), guide = "none") +
+scale_discrete_manual("point_color", values = c("#00b300", "#1a1aff"), guide = "none") +
+guides(fill = guide_legend(override.aes = list(fill = c("#00b300", "#1a1aff"), color = NA, point_color = NA))) }}
+else if (majorParties == FALSE) {
+if (unit=="year") {
+g <- ggplot(estimates, aes(x=mean.x, y= as.factor(year), color=party, point_color=party, fill=party)) +
+geom_density_ridges(jittered_points = TRUE, scale = .6, rel_min_height = .02,alpha = 0.5, point_shape = "|", point_size = 2, size = 0.5, position = position_points_jitter(height = 0)) +
+scale_y_discrete(expand = c(.01, 0)) +
+scale_x_continuous(expand = c(0.1, 0.1),limits = c(-3, 3)) +
+scale_fill_manual(values = c("#00ce00", "#0000cd","#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a","#003500"),
+labels = c(K = "Kuomintang (Chinese Nationalist Party)",
+D = "Democratic Progress Party",
+k2 = "New Party",
+`T` = "Taiwan Solitary Union",
+N = "Non-Partisan Solidarity Union",
+O1 = "Non Partisan",
+O5 = "Democratic Alliance",
+P = "People First Party")) +
+scale_color_manual(values = c("#00ce00", "#0000cd","#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a", "#003500"), guide = "none") +
+scale_discrete_manual("point_color", values = c("#00ce00", "#0000cd", "#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a", "#003500"), guide = "none") +
+guides(fill = guide_legend(override.aes = list(fill = c("#00ce00", "#0000cd", "#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a", "#003500"), color = NA, point_color = NA)))}
+else if (unit=="session"){
+g <- ggplot(estimates, aes(x=mean.x, y= as.factor(session), color=party, point_color=party, fill=party)) +
+geom_density_ridges(jittered_points = TRUE, scale = .6, rel_min_height = .02,alpha = 0.5, point_shape = "|", point_size = 2, size = 0.5, position = position_points_jitter(height = 0)) +
+scale_y_discrete(expand = c(.01, 0)) +
+scale_x_continuous(expand = c(0.1, 0.1),limits = c(-3, 3)) +
+scale_fill_manual(values = c("#00ce00", "#0000cd","#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a","#003500"),
+labels = c(K = "Kuomintang (Chinese Nationalist Party)",
+D = "Democratic Progress Party",
+k2 = "New Party",
+`T` = "Taiwan Solitary Union",
+N = "Non-Partisan Solidarity Union",
+O1 = "Non Partisan",
+O5 = "Democratic Alliance",
+P = "People First Party")) +
+scale_color_manual(values = c("#00ce00", "#0000cd","#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a", "#003500"), guide = "none") +
+scale_discrete_manual("point_color", values = c("#00ce00", "#0000cd", "#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a", "#003500"), guide = "none") +
+guides(fill = guide_legend(override.aes = list(fill = c("#00ce00", "#0000cd", "#e6e600", "#a460f4", "#e0e0e0", "#ffebad", "#ff981a", "#003500"), color = NA, point_color = NA)))}}
+if (unit=="year"){
+g + theme_ridges(center = TRUE) +
+theme(legend.position = "bottom",
+legend.justification = "center",
+legend.background = element_blank(),
+legend.key = element_blank(),
+legend.title = element_blank(),
+legend.text = element_text(size= 12 ,vjust = 0.5,family ="Trebuchet MS", face = "bold")) +
+theme(panel.grid.major.y = element_line(colour = "grey60", linetype = "blank")) +
+theme(axis.text = element_text(size=17, family ="Trebuchet MS", face = "bold"),
+axis.title = element_text(size = 17, family ="Trebuchet MS", face = "bold"),
+axis.text.x = element_text(size = 17, family ="Trebuchet MS",face = "bold"),
+axis.text.y = element_text(size = 17, family ="Trebuchet MS",face = "bold"),
+axis.title.x = element_text(family ="Trebuchet MS", vjust = -7,size = 17, face = "bold"),
+axis.title.y = element_text(family ="Trebuchet MS", size = 17, face = "bold")) +
+theme(plot.title = element_text(hjust = 0.5, size = 30,family = "Trebuchet MS", face = "bold"),
+plot.subtitle = element_text(hjust = 0, vjust = 0, face = "bold",family = "Trebuchet MS", size = 15),
+plot.caption = element_text(family = "Trebuchet MS", size = 12, face = "bold")) +
+annotate("text", x = 2, y = factor(2013), label = "Electoral System: \n Single Member Districts", family="Trebuchet MS", size=7, colour = "grey16",fontface = "italic") +
+annotate("text", x = 2, y = factor(1998), label = "Electoral System: \n Multi-Member Districts", family="Trebuchet MS", size=7, colour = "grey16",fontface = "italic")+
+annotate("rect", xmin =-Inf , xmax = Inf, ymin = factor(2008), ymax = Inf, alpha= 0.1, fill = "blue") +
+annotate("rect", xmin =-Inf , xmax = Inf, ymin = -Inf , ymax = factor(2008), alpha= 0.08, fill = "grey")  +
+labs(y = "Year",
+title = "Binary IRT Estimation via EM algorithms  of an Ideal Point Model \n for Roll Call Votes: Taiwan Legislative Yuan, 1992 - 2016",
+x = TeX("point estimates for the legislator ideal points $\\x_{i}"),
+caption = "Source: The Center of Legislative Study| Soochow University | Taiwan")
+}
+else if (unit=="session"){
+g + theme_ridges(center = TRUE) +
+theme(legend.position = "bottom",
+legend.justification = "center",
+legend.background = element_blank(),
+legend.key = element_blank(),
+legend.title = element_blank(),
+legend.text = element_text(size= 12 ,vjust = 0.5,family ="Trebuchet MS", face = "bold")) +
+theme(panel.grid.major.y = element_line(colour = "grey60", linetype = "blank")) +
+theme(axis.text = element_text(size=17, family ="Trebuchet MS", face = "bold"),
+axis.title = element_text(size = 17, family ="Trebuchet MS", face = "bold"),
+axis.text.x = element_text(size = 17, family ="Trebuchet MS",face = "bold"),
+axis.text.y = element_text(size = 17, family ="Trebuchet MS",face = "bold"),
+axis.title.x = element_text(family ="Trebuchet MS", vjust = -7,size = 17, face = "bold"),
+axis.title.y = element_text(family ="Trebuchet MS", size = 17, face = "bold")) +
+theme(plot.title = element_text(hjust = 0.5, size = 30,family = "Trebuchet MS", face = "bold"),
+plot.subtitle = element_text(hjust = 0, vjust = 0, face = "bold",family = "Trebuchet MS", size = 15),
+plot.caption = element_text(family = "Trebuchet MS", size = 12, face = "bold"))+
+annotate("text", x = 2, y = factor("8th Session"), label = "Electoral System: \n Single-Member Districts", family="Trebuchet MS", size=7, colour = "grey16",fontface = "italic") +
+annotate("text", x = 2, y = factor("4th Session"), label = "Electoral System: \n  Multi-Members Districs", family="Trebuchet MS", size=7, colour = "grey16",fontface = "italic") +
+annotate("rect", xmin =-Inf , xmax = Inf, ymin = factor("7th Session"), ymax = Inf, alpha= 0.08, fill = "blue") +
+annotate("rect", xmin =-Inf , xmax = Inf, ymin = -Inf , ymax = factor("7th Session"), alpha= 0.1, fill = "grey") +
+labs(y = "Session",
+title = "Binary IRT Estimation via EM algorithms  of an Ideal Point Model \n for Roll Call Votes: Taiwan Legislative Yuan, 2nd - 8th Sessions",
+x = TeX("point estimates for the legislator ideal points $\\x_{i}"),
+caption = "Source: The Center of Legislative Study| Soochow University | Taiwan")
+}}
+packagesInstall(c("extrafont", "tidyverse","readxl", "ggpubr", "reshape2", "pscl","wnominate", "anominate", "MCMCpack", "ellipse", "ggridges","lubridate", "udpipe", "purrr", "gganimate", "plotly", "gapminder", "emIRT", "latex2exp", "ggjoy"))
+# The 2nd Session Legislative Yuan
+second_1 <- read_excel("2nd/二屆立委記名投票記錄正式版.xlsx")
+second_2 <- read_excel("2nd/第二屆立法院院會記名表決內容背景資料.xlsx")
+second_3 <- read_excel("2nd/各黨各會期參與委員會.xlsx")
+second_4 <- read_excel("2nd/第二屆黨籍立委(研究對象).xlsx")
+# The 3rd Session Legislative Yuan
+third_1 <- read_excel("3rd/記名投票紀錄更正版.xlsx")
+third_2 <- read_excel("3rd/第三屆立法院院會記名表決內容背景資料.xlsx")
+third_3 <- read_excel("3rd/政黨記名投票紀錄更正版 查詢.xlsx")
+third_4 <- read_excel("3rd/常設委員會名單.xlsx")
+# The 4th Session Legislative Yuan
+fourth_1 <- read_excel("4th/四屆立委記名投票記錄.xlsx")
+fourth_2 <- read_excel("4th/第四屆立法院院會記名表決內容背景資料.xlsx")
+fourth_3 <- read_excel("4th/記名投票政黨 查詢.xlsx")
+fourth_4 <- read_excel("4th/常設委員會名單.xlsx")
+# The 5th Session Legislative Yuan
+fifth_1 <- read_excel("5th/第五屆立委記名投票記錄.xlsx")
+fifth_2 <- read_excel("5th/第五屆立法院院會記名表決內容背景資料.xlsx")
+colnames(fifth_2)[colnames(fifth_2) == "編號"] <- "表決編號"
+fifth_3 <- read_excel("5th/綜合查詢.xlsx")
+colnames(fifth_3)[colnames(fifth_3) == "第一會期黨團"] <- "黨籍"
+fifth_4 <- read_excel("5th/常設委員會名單.xlsx")
+# The 6th Session Legislative Yuan
+sixth_1 <- read_excel("6th/第六屆立委記名投票紀錄.xlsx")
+sixth_2 <- read_excel("6th/第六屆立法院院會記名表決內容背景資料 (另行編碼）.xlsx")
+colnames(sixth_2)[colnames(sixth_2) == "編號"] <- "表決編號"
+sixth_3 <- read_excel("6th/第六屆立委個人檔案 查詢.xlsx")
+colnames(sixth_3)[colnames(sixth_3) == "第二會期黨團"] <- "黨籍"
+sixth_3$黨籍[sixth_3$黨籍 == "中國國民黨" |
+sixth_3$黨籍 == "民國96年11月26日宣誓就職，遞補劉憶如委員"|
+sixth_3$黨籍 == "於民國95年3月11日補選，95年3月17日宣誓到職，遞補黃敏惠委"|
+sixth_3$黨籍 == "民國96年7月12日宣誓就職，遞補曹壽民委員"|
+sixth_3$黨籍 == "中國國民黨（中途離職，離職日期：094年12月20日）"] <- "中國國民黨"
+sixth_3$黨籍[sixth_3$黨籍 == "台灣團結聯盟"|
+sixth_3$黨籍 == "民國96年3月6日宣誓就職，遞補黃政哲委員。"] <- "台灣團結聯盟"
+sixth_3$黨籍[sixth_3$黨籍 == "民主進步黨"|
+sixth_3$黨籍 == "中途離職，離職日期：094年06月12日投入南投縣長選舉" |
+sixth_3$黨籍 == "民國96年5月24日宣誓就職，遞補盧天麟委員。"|
+sixth_3$黨籍 == "民國96年9月17日宣誓就職，遞補尤清委員。"|
+sixth_3$黨籍 == "民國96年5月24日宣誓就職，遞補張俊雄委員"|
+sixth_3$黨籍 == "民國95年11月24日宣誓就職，遞補林濁水委員。"|
+sixth_3$黨籍 == "民國96年6月11日宣誓就職，遞補陳重信委員。" |
+sixth_3$黨籍 == "民主進步黨（94年10月05日離職）"|
+sixth_3$黨籍 == "於民國95年1月27日宣誓，遞補蔡英文委員。"|
+sixth_3$黨籍 == "於民國95年5月2日遞補第六屆邱永仁委員全國不分區立委"] <- "民主進步黨"
+sixth_3$黨籍[sixth_3$黨籍 == "親民黨（民國95年1月27日退出親民黨加入國民黨）"|
+sixth_3$黨籍 == "親民黨"|
+sixth_3$黨籍 == "民國96年1月18日宣誓就職，遞補顧崇廉委員。"] <- "親民黨"
+sixth_3$黨籍[sixth_3$黨籍 == "無黨團結聯盟"]  <- "無黨團結聯盟"
+sixth_3$黨籍[sixth_3$黨籍 =="無" ]  <- NA
+sixth_4 <- read_excel("6th/常設委員會名單FINAL.xlsx")
+# The 7th Session Legislative Yuan
+seventh_1 <- read_excel("7th/第七屆立委個人投票記錄2.xlsx")
+seventh_2 <- read_excel("7th/第七屆立法院院會記名表決內容.xlsx")
+colnames(seventh_2)[colnames(seventh_2) == "編號"] <- "表決編號"
+seventh_3 <- read_excel("7th/第七屆立委個人檔案2.xlsx")
+colnames(seventh_3)[colnames(seventh_3) == "第一會期黨團"] <- "黨籍"
+seventh_3$黨籍[seventh_3$黨籍 == "中國國民黨（2008年7月1日辭去立法委員職務，轉任金管會副主委）"|
+seventh_3$黨籍 == "99年3月8日宣誓就職(遞補邱鏡淳委員)" |
+seventh_3$黨籍 == "民國 \t民國97年7月10日宣誓就職(（中國國民黨）" |
+seventh_3$黨籍 == "99年1月18日宣誓就職（遞補黃健庭委員缺額）"|
+seventh_3$黨籍 == "99年1月18日宣誓就職（遞補江連福委員缺額）"|
+seventh_3$黨籍 == "99年3月8日宣誓就職(遞補張花冠委員)"|
+seventh_3$黨籍 == "98年10月5日宣誓就職（遞補張碩文委員）"|
+seventh_3$黨籍 == "99年1月18日宣誓就職（遞補廖正井委員）"|
+seventh_3$黨籍 == "99年3月8日宣誓就職(遞補邱鏡淳委員)"|
+seventh_3$黨籍 == "99年3月8日宣誓就職(遞補傅崐萁委員)"|
+seventh_3$黨籍 == "99年3月8日宣誓就職(遞補吳志揚委員)"|
+seventh_3$黨籍 == "98年12月18日宣誓就職（遞補吳敦義委員缺額）"|
+seventh_3$黨籍 == "98年10月15日宣誓就職(遞補李嘉進委員)"|
+seventh_3$黨籍 == "98年04月06日宣誓就職" |
+seventh_3$黨籍 == "98年04月01日宣誓就職" |
+seventh_3$黨籍 == "中國國民黨(\t2008年12月10日當選無效之訴確定，解除立法委員職務。)"|
+seventh_3$黨籍 == "中國國民黨(2009年1月8日起辭去立法委員職務)"|
+seventh_3$黨籍 == "民國97年7月1日辭去立法委員職務，轉任金管會副主委。"|
+seventh_3$黨籍 == "2008年7月1日辭去立法委員職務，轉任金管會副主委。"|
+seventh_3$黨籍 == "民國100年3月11日宣誓就職"]  <- "中國國民黨"
+seventh_3$黨籍[seventh_3$黨籍 == "99年1月18日宣誓就職（遞補廖正井委員）"|
+seventh_3$黨籍 == "2011年3月11日宣誓就職"|
+seventh_3$黨籍 == "100年3月11日宣誓就職"] <- "民主進步黨"
+seventh_4 <- read_excel("7th/第七屆委員會名單.xlsx")
+# The 8th Session Legislative Yuan
+eighth_1 <- read_excel("8th/第八屆立委個人投票記錄.xlsx")
+eighth_2 <- read_excel("8th/第八屆立法院院會記名表決內容.xlsx")
+colnames(eighth_2)[colnames(eighth_2) == "編號"] <- "表決編號"
+eighth_3 <- read_excel("8th/第八屆立委個人檔案2.xlsx")
+colnames(eighth_3)[colnames(eighth_3) == "第一會期黨團"] <- "黨籍"
+eighth_3$黨籍[eighth_3$立委姓名 == "顏寬恒" & eighth_3$黨籍 == "102年2月1日公告遞補"|
+eighth_3$立委姓名 == "陳怡潔" & eighth_3$黨籍 == "民國102年3月22日公告遞補"|
+eighth_3$立委姓名 == "葉津鈴" & eighth_3$黨籍 == "民國102年7月26日公告遞補"|
+eighth_3$立委姓名 == "周倪安" & eighth_3$黨籍 == "民國103年2月10日公告遞補"|
+eighth_3$立委姓名 == "賴振昌" & eighth_3$黨籍 == "民國103年2月10日公告遞補"|
+eighth_3$立委姓名 == "徐志榮" & eighth_3$黨籍 == "民國104年2月12日公告遞補"|
+eighth_3$立委姓名 == "黃國書" & eighth_3$黨籍 == "民國104年2月12日公告遞補"|
+eighth_3$立委姓名 == "許淑華" & eighth_3$黨籍 == "民國104年2月12日公告遞補"|
+eighth_3$立委姓名 == "詹滿容" & eighth_3$黨籍 == "民國104年7月17日公告遞補。"] <- "中國國民黨"
+eighth_3$黨籍[eighth_3$立委姓名 == "陳怡潔" & eighth_3$黨籍 == "民國102年3月22日公告遞補"|
+eighth_3$立委姓名 == "葉津鈴" & eighth_3$黨籍 == "民國102年7月26日公告遞補"|
+eighth_3$立委姓名 == "周倪安" & eighth_3$黨籍 == "民國103年2月10日公告遞補"|
+eighth_3$立委姓名 == "賴振昌" & eighth_3$黨籍 == "民國103年2月10日公告遞補"] <- "台灣團結聯盟"
+eighth_3$黨籍[eighth_3$立委姓名 == "陳素月" & eighth_3$黨籍 == "民國104年2月12日公告遞補"|
+eighth_3$立委姓名 == "莊瑞雄" & eighth_3$黨籍 == "民國104年2月12日公告遞補"] <- "民主進步黨"
+eighth_3$黨籍[eighth_3$立委姓名 == "顏清標" & eighth_3$黨籍 == "無"|
+eighth_3$立委姓名 == "高金素梅" & eighth_3$黨籍 == "無"|
+eighth_3$立委姓名 == "陳雪生" & eighth_3$黨籍 == "無"] <- "無黨團結聯盟"
+eighth_4 <- read_excel("8th/第八屆委員會名單.xlsx")
+load("~/Box/myBox/Documents/Taiwan Scaling Dataset/legisvote.rda")
+eighth_2
+eighth_2[c("表決編號","屆期","會期","日期", "主席","表決內容", "提案人")]
+seventh_2[c("表決編號","屆期","會期","日期", "主席","表決內容", "提案人")]
+eighth_2[c("表決編號","屆期","會期","日期", "主席","表決內容", "提案人")]
+sixth_2[c("表決編號","屆期","會期","日期", "主席","表決內容", "提案人")]
+sixth_2
+unique(sixth_2$類別)
+sixth_2[c("表決編號","屆期","會期","日期", "主席","表決內容", "原提案人")]
+fifth_2[c("表決編號","屆期","會期","日期", "主席","表決內容", "提案人")]
+fifth_2
+eighth_2[c("表決編號","屆期","會期","日期", "主席","表決內容", "提案人")]
+eighth_2[c("表決編號","屆期","會期","日期","表決內容")]
+eighth_2[c("表決編號","屆期","會期","日期","表決內容")] %>%
+arrange(表決編號)
+seventh_2[c("表決編號","屆期","會期","日期", "主席","表決內容", "提案人")] %>%
+arrange(表決編號)
+sixth_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+fourth_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+third_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+third_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+second_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+second_2[c("屆期","會期","日期","表決內容")]%>%
+rowid_to_column("表決編號") %>%
+arrange(表決編號)
+second_2
+content_3rd <- third_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+content_3rd <- third_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+content_4th <-  fourth_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+content_5th <- fifth_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+content_2nd<- second_2[c("屆期","會期","日期","表決內容")]%>%
+rowid_to_column("表決編號") %>%
+arrange(表決編號)
+content_3rd <- third_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+content_4th <-  fourth_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+content_5th <- fifth_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+sixth_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+seventh_2[c("表決編號","屆期","會期","日期","表決內容")] %>%
+arrange(表決編號)
+eighth_2[c("表決編號","屆期","會期","日期","表決內容")] %>%
+arrange(表決編號)
+content_6th sixth_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+content_6th <-sixth_2[c("表決編號","屆期","會期","日期","表決內容")]%>%
+arrange(表決編號)
+content_7th <- seventh_2[c("表決編號","屆期","會期","日期","表決內容")] %>%
+arrange(表決編號)
+content_8th <-eighth_2[c("表決編號","屆期","會期","日期","表決內容")] %>%
+arrange(表決編號)
+content_8th
+library(asmcjr)

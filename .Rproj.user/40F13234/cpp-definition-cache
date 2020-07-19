@@ -1,0 +1,428 @@
+[
+    {
+        "definitions" : [
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 790,
+                "name" : "runif",
+                "parent_name" : "",
+                "usr" : "c:@F@runif#"
+            },
+            {
+                "column" : 6,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 794,
+                "name" : "copyFromR(int *, int *, int *, int *, int *, int *, int *, int *, int *, double *, double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@copyFromR#*I#S0_#S0_#S0_#S0_#S0_#S0_#S0_#S0_#*d#S1_#S1_#"
+            },
+            {
+                "column" : 24,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 808,
+                "name" : "evaluate(void *, const lbfgsfloatval_t *, lbfgsfloatval_t *, const int, const lbfgsfloatval_t)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@evaluate#*v#*1d#*d#1I#1d#"
+            },
+            {
+                "column" : 12,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 992,
+                "name" : "progress(void *, const lbfgsfloatval_t *, const lbfgsfloatval_t *, const lbfgsfloatval_t, const lbfgsfloatval_t, const lbfgsfloatval_t, const lbfgsfloatval_t, int, int, int)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@progress#*v#*1d#S1_#1d#1d#1d#1d#I#I#I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1025,
+                "name" : "mainlbfgs(int *, int *, double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@mainlbfgs#*I#S0_#*d#S1_#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1290,
+                "name" : "vecalloc(size_t)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@vecalloc#l#"
+            },
+            {
+                "column" : 20,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1299,
+                "name" : "vecfree(void *)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@vecfree#*v#"
+            },
+            {
+                "column" : 20,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1313,
+                "name" : "veccpy(lbfgsfloatval_t *, const lbfgsfloatval_t *, const int)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@veccpy#*d#*1d#1I#"
+            },
+            {
+                "column" : 20,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1322,
+                "name" : "vecncpy(lbfgsfloatval_t *, const lbfgsfloatval_t *, const int)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@vecncpy#*d#*1d#1I#"
+            },
+            {
+                "column" : 20,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1331,
+                "name" : "vecadd(lbfgsfloatval_t *, const lbfgsfloatval_t *, const lbfgsfloatval_t, const int)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@vecadd#*d#*1d#1d#1I#"
+            },
+            {
+                "column" : 20,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1340,
+                "name" : "vecdiff(lbfgsfloatval_t *, const lbfgsfloatval_t *, const lbfgsfloatval_t *, const int)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@vecdiff#*d#*1d#S1_#1I#"
+            },
+            {
+                "column" : 20,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1349,
+                "name" : "vecscale(lbfgsfloatval_t *, const lbfgsfloatval_t, const int)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@vecscale#*d#1d#1I#"
+            },
+            {
+                "column" : 20,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1367,
+                "name" : "vecdot(lbfgsfloatval_t *, const lbfgsfloatval_t *, const lbfgsfloatval_t *, const int)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@vecdot#*d#*1d#S1_#1I#"
+            },
+            {
+                "column" : 20,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1376,
+                "name" : "vec2norm(lbfgsfloatval_t *, const lbfgsfloatval_t *, const int)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@vec2norm#*d#*1d#1I#"
+            },
+            {
+                "column" : 20,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1382,
+                "name" : "vec2norminv(lbfgsfloatval_t *, const lbfgsfloatval_t *, const int)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@vec2norminv#*d#*1d#1I#"
+            },
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 3,
+                "line" : 1394,
+                "name" : "tag_callback_data",
+                "parent_name" : "",
+                "usr" : "c:@S@tag_callback_data"
+            },
+            {
+                "column" : 34,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 8,
+                "line" : 1400,
+                "name" : "callback_data_t",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@T@callback_data_t"
+            },
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 3,
+                "line" : 1402,
+                "name" : "tag_iteration_data",
+                "parent_name" : "",
+                "usr" : "c:@S@tag_iteration_data"
+            },
+            {
+                "column" : 35,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 8,
+                "line" : 1408,
+                "name" : "iteration_data_t",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@T@iteration_data_t"
+            },
+            {
+                "column" : 15,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 8,
+                "line" : 1421,
+                "name" : "line_search_proc",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@T@line_search_proc"
+            },
+            {
+                "column" : 18,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1526,
+                "name" : "lbfgs_malloc(int)",
+                "parent_name" : "",
+                "usr" : "c:@F@lbfgs_malloc"
+            },
+            {
+                "column" : 6,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1534,
+                "name" : "lbfgs_free(lbfgsfloatval_t *)",
+                "parent_name" : "",
+                "usr" : "c:@F@lbfgs_free"
+            },
+            {
+                "column" : 6,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1539,
+                "name" : "lbfgs_parameter_init(lbfgs_parameter_t *)",
+                "parent_name" : "",
+                "usr" : "c:@F@lbfgs_parameter_init"
+            },
+            {
+                "column" : 5,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1544,
+                "name" : "lbfgs(int, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgs_evaluate_t, lbfgs_progress_t, void *, lbfgs_parameter_t *)",
+                "parent_name" : "",
+                "usr" : "c:@F@lbfgs"
+            },
+            {
+                "column" : 12,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 1944,
+                "name" : "line_search_backtracking(int, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, const lbfgsfloatval_t *, const lbfgsfloatval_t *, lbfgsfloatval_t *, callback_data_t *, const lbfgs_parameter_t *)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@line_search_backtracking#I#*d#S0_#S0_#S0_#S0_#*1d#S1_#S0_#*$@S@tag_callback_data#*1$@SA@lbfgs_parameter_t#"
+            },
+            {
+                "column" : 12,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 2037,
+                "name" : "line_search_backtracking_owlqn(int, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, const lbfgsfloatval_t *, const lbfgsfloatval_t *, lbfgsfloatval_t *, callback_data_t *, const lbfgs_parameter_t *)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@line_search_backtracking_owlqn#I#*d#S0_#S0_#S0_#S0_#*1d#S1_#S0_#*$@S@tag_callback_data#*1$@SA@lbfgs_parameter_t#"
+            },
+            {
+                "column" : 12,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 2111,
+                "name" : "line_search_morethuente(int, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, const lbfgsfloatval_t *, const lbfgsfloatval_t *, lbfgsfloatval_t *, callback_data_t *, const lbfgs_parameter_t *)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@line_search_morethuente#I#*d#S0_#S0_#S0_#S0_#*1d#S1_#S0_#*$@S@tag_callback_data#*1$@SA@lbfgs_parameter_t#"
+            },
+            {
+                "column" : 12,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 2424,
+                "name" : "update_trial_interval(lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, lbfgsfloatval_t *, const lbfgsfloatval_t, const lbfgsfloatval_t, int *)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@update_trial_interval#*d#S0_#S0_#S0_#S0_#S0_#S0_#S0_#S0_#1d#1d#*I#"
+            },
+            {
+                "column" : 24,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 2597,
+                "name" : "owlqn_x1norm(const lbfgsfloatval_t *, const int, const int)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@owlqn_x1norm#*1d#1I#1I#"
+            },
+            {
+                "column" : 13,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 2613,
+                "name" : "owlqn_pseudo_gradient(lbfgsfloatval_t *, const lbfgsfloatval_t *, const lbfgsfloatval_t *, const int, const lbfgsfloatval_t, const int, const int)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@owlqn_pseudo_gradient#*d#*1d#S1_#1I#1d#1I#1I#"
+            },
+            {
+                "column" : 13,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 2656,
+                "name" : "owlqn_project(lbfgsfloatval_t *, const lbfgsfloatval_t *, const int, const int)",
+                "parent_name" : "",
+                "usr" : "c:lbfgs_bu3.c@F@owlqn_project#*d#*1d#1I#1I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 2674,
+                "name" : "keithrules(double *, double *, double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@keithrules#*d#S0_#S0_#S0_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 2737,
+                "name" : "slicesimilarities(double *, double *, double *, double *, double *, double *, double *, double *, int *, double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@slicesimilarities#*d#S0_#S0_#S0_#S0_#S0_#S0_#S0_#*I#S0_#S0_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 2845,
+                "name" : "slice2(double *, double *, double *, int, double, int, double *, double)",
+                "parent_name" : "",
+                "usr" : "c:@F@slice2#*d#S0_#S0_#I#d#I#S0_#d#"
+            },
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 2913,
+                "name" : "keithrules22(double *, double *, double, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@keithrules22#*d#S0_#d#I#"
+            },
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 2985,
+                "name" : "keithrules10(double *, double *, double)",
+                "parent_name" : "",
+                "usr" : "c:@F@keithrules10#*d#S0_#d#"
+            },
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 3048,
+                "name" : "keithrules11(double *, double *, double)",
+                "parent_name" : "",
+                "usr" : "c:@F@keithrules11#*d#S0_#d#"
+            },
+            {
+                "column" : 6,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 3110,
+                "name" : "xsvdrotate(int, int, double *, double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@xsvdrotate#I#I#*d#S0_#S0_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 3341,
+                "name" : "sliceunfolding(double *, double *, double *, double *, double *, double *, double *, double *, int *, double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@sliceunfolding#*d#S0_#S0_#S0_#S0_#S0_#S0_#S0_#*I#S0_#S0_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 3607,
+                "name" : "sliceX(double *, double *, double *, int, double, int, double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@sliceX#*d#S0_#S0_#I#d#I#S0_#S0_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 3676,
+                "name" : "keithrules222(double *, double *, double *, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@keithrules222#*d#S0_#S0_#I#"
+            },
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 3718,
+                "name" : "sliceZ(double *, double *, double *, int, double, int, double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@sliceZ#*d#S0_#S0_#I#d#I#S0_#S0_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 3788,
+                "name" : "keithrules333(double *, double *, double *, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@keithrules333#*d#S0_#S0_#I#"
+            },
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 3824,
+                "name" : "keithrules111(double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@keithrules111#*d#S0_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+                "kind" : 6,
+                "line" : 3858,
+                "name" : "keithrules100(double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@keithrules100#*d#S0_#"
+            }
+        ],
+        "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/lbfgs_bu3.c",
+        "file_last_write" : 1589066149.000000
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 6,
+                "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/registerDynamicSymbol.c",
+                "kind" : 6,
+                "line" : 7,
+                "name" : "R_init_asmcjr(DllInfo *)",
+                "parent_name" : "",
+                "usr" : "c:@F@R_init_asmcjr#*$@S@_DllInfo#"
+            }
+        ],
+        "file" : "/Users/yenchiehliao/Documents/GitHub/asmcjr/src/registerDynamicSymbol.c",
+        "file_last_write" : 1589218409.000000
+    }
+]

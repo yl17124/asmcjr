@@ -1,0 +1,5 @@
+"0","save(legisvote, file=""legisvote.rda"", compress=""xz"") 
+"
+"2","Error in save(legisvote, file = ""legisvote.rda"", compress = ""xz"") : 
+  object ‘legisvote’ not found
+"

@@ -1,0 +1,16 @@
+"0","```r
+makePriors
+
+```"
+"1","function (.N = 20, .J = 100, .D = 1) 
+{
+    out <- vector(mode = \"list\")
+    out$x <- list(mu = matrix(rep(0, .D), nrow = .D), sigma = 1^2 * 
+        diag(.D))
+    out$beta <- list(mu = matrix(rep(0, .D + 1), nrow = .D + 
+        1), sigma = 5^2 * diag(.D + 1))
+    return(out)
+}
+<bytecode: 0x7fcae1b78aa8>
+<environment: namespace:emIRT>
+"

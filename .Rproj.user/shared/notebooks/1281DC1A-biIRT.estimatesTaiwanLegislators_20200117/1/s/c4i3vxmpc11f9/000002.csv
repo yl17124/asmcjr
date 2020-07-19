@@ -1,0 +1,6 @@
+"0","```r
+packagesInstall(c(\"extrafont\", \"tidyverse\",\"readxl\", \"ggpubr\", \"reshape2\", \"pscl\",\"wnominate\", \"anominate\", \"MCMCpack\", \"ellipse\", \"ggridges\",\"lubridate\", \"udpipe\", \"purrr\", \"gganimate\", \"plotly\", \"gapminder\", \"emIRT\", \"latex2exp\", \"ggjoy\"))
+```"
+"1","extrafont tidyverse    readxl    ggpubr  reshape2      pscl wnominate anominate  MCMCpack   ellipse  ggridges lubridate    udpipe     purrr gganimate    plotly gapminder     emIRT latex2exp     ggjoy 
+     TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE      TRUE 
+"

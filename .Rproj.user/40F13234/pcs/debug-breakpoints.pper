@@ -1,0 +1,21 @@
+{
+    "debugBreakpointsState" : {
+        "breakpoints" : [
+            {
+                "editor_line_number" : 1507,
+                "editor_state" : 1,
+                "function_name" : "window.mcmc",
+                "function_steps" : "15",
+                "id" : 0,
+                "is_package_breakpoint" : true,
+                "is_pending_debug_completion" : false,
+                "line_number" : 1507,
+                "needs_updated_steps" : false,
+                "package_name" : "asmcjr",
+                "path" : "~/Documents/GitHub/asmcjr/R/asmcjr.r",
+                "state" : 1,
+                "type" : 0
+            }
+        ]
+    }
+}

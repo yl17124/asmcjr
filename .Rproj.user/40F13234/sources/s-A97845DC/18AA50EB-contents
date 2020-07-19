@@ -1,0 +1,27 @@
+  
+url: http://yl17124.github.io/asmcjr
+
+home:
+  title: Analyzing Spatial Models of Choice and Judgment with R
+  links:
+  ganalytics: UA-115082821-1
+
+authors:
+  Dave Armstrong:
+    href: https://www.essex.ac.uk/people/carro40801/royce-carroll
+  Royce Carroll:
+    href: https://www.essex.ac.uk/people/carro40801/royce-carroll
+  Christopher Hare:
+    href: https://www.christopherdhare.com/about
+  Ryan Bakker:
+    href: https://www.essex.ac.uk/people/bakke28107/ryan-bakker
+  Howard L. Rosenthal:
+    href: https://politics.princeton.edu/people/howard-l-rosenthal
+  David, Yen-Cheih Liao:
+    href: https://github.com/yl17124
+
+development:
+  mode: auto
+
+
+  
