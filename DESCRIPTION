@@ -12,7 +12,7 @@ Authors@R: c(person("Dave", "Armstrong", role=c("aut", "cre"), email="dave@quant
 Description: Supports the book - Analyzing Spatial Models of Choice and Judgment in R, CRC Press (2014). 
 Depends: R(>= 3.5.0), rjags
 Imports:
-    boot, 
+    boot,
     basicspace,
     coda,
     ellipse,
@@ -23,9 +23,10 @@ Imports:
     MCMCpack,
     plyr,
     stats,
-    smacof, 
+    smacof,
     tibble,
-    utils
+    utils,
+    lifecycle
 License: GPL (>=2)
 Encoding: UTF-8
 LazyData: true
@@ -37,3 +38,4 @@ Suggests:
 VignetteBuilder: knitr
 URL: https://github.com/davidaarmstrong/asmcjr
 BugReports: https://github.com/davidaarmstrong/asmcjr/issues
+RdMacros: lifecycle
