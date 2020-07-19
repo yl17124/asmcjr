@@ -1,7 +1,6 @@
 # asmcjr <img src="https://quantoid.net/files/images/booksticker.png" width="140" align="right" /> <br /> 
 
 [![Build Status](https://travis-ci.com/yl17124/asmcjr.svg?branch=master)](https://travis-ci.com/yl17124/asmcjr)
-[![codecov](https://codecov.io/gh/yl17124/asmcjr/branch/master/graph/badge.svg)](https://codecov.io/gh/yl17124/asmcjr)
 ![R-CMD-check](https://github.com/yl17124/asmcjr/workflows/R-CMD-check/badge.svg?branch=master&event=check_run)
 
 This package supports the book ["Analyzing Spatial Models of Choice and Judgment with R"](https://www.crcpress.com/Analyzing-Spatial-Models-of-Choice-and-Judgment-with-R/Armstrong-II-Bakker-Carroll-Hare-Poole-Rosenthal/p/book/9781466517158).  In its second edition, much of the R code has been streamlined. This package contains all of the data and functions to replicate the analyses in the book. 
@@ -34,7 +33,9 @@ devtools::install_github("davidaarmstrong/asmcjr")
 
 <br />
 
-## Example 1: Running Bayesian Aldrich-Mckelvey Scaling on the French module of the 2009 European Election Study
+## Use 
+
+#### Example 1: Running Bayesian Aldrich-Mckelvey Scaling on the French module of the 2009 European Election Study
 
 ```r
 data(franceEES2009)
@@ -42,7 +43,7 @@ head(franceEES2009, n = 10)
 ```
 
 <p align="center">
-  <img src="https://github.com/yl17124/figures/blob/master/first_example_df1.png">
+  <img src="images/first_example_df1.png">
 </p>
 
 ```r
@@ -53,7 +54,7 @@ example_result_france <- aldmck(franceEES2009, respondent=1,
 str(example_result_france)                        
 ```
 <p align="left">
-  <img width="650" height="270" src="https://github.com/yl17124/figures/blob/master/first_example_df2.png">
+  <img width="650" height="270" src="images/first_example_df2.png">
 </p>
 
 ```r
@@ -66,20 +67,20 @@ print(example_result_graph)
 ```
 
 <p align="center">
-  <img width="500" height="500" src="https://github.com/yl17124/figures/blob/master/first_example_plot.png">
+  <img width="500" height="500" src="images/first_example_plot.png">
 </p>
 
  <br />
 
-## Example 2: Running W-NOMINATE Scaling on 7th Taiwan Legislative Roll Calls 
+#### Example 2: Running W-NOMINATE Scaling on 7th Taiwan Legislative Roll Calls 
 ```r
 library(readr)
-legis_7th_Taiwan <- read_csv("https://raw.githubusercontent.com/yl17124/figures/master/legis_7th_Taiwan.csv")
+legis_7th_Taiwan <- read_csv("images/legis_7th_Taiwan.csv")
 head(legis_7th_Taiwan, n =10)
 ```
 
 <p align="center">
-  <img src="https://github.com/yl17124/figures/blob/master/second_example_df1.png">
+  <img src="images/second_example_df1.png">
 </p>
 
 ```r
@@ -93,7 +94,7 @@ summary(pscl_df, verbose=FALSE)
 ```
 
 <p align="left">
-  <img width="520" height="395"  src="https://github.com/yl17124/figures/blob/master/second_example_pscl.png">
+  <img width="520" height="395"  src="images/second_example_pscl.png">
 </p>
 
 
@@ -123,7 +124,7 @@ print(example_result_graph2)
 ```
 
 <p align="center">
-  <img width="540" height="390" src="https://github.com/yl17124/figures/blob/master/first_example_plot2.png">
+  <img width="540" height="390" src="images/first_example_plot2.png">
 </p>
 
 <br />
@@ -256,4 +257,6 @@ Execution halted
 
 
 ## Reference
-For citation from this book, run `citation("asmcjr")`.
+
+For citation from this book, run `citation("asmcjr")`.  
+
