@@ -16,7 +16,13 @@
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-172937037-1"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-172937037-1');
+</script>
 </head>
 <body data-spy="scroll" data-target="#toc">
     <div class="container template-home">
@@ -46,6 +52,23 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    News
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li class="dropdown-header">Releases</li>
+    <li>
+      <a href="https://yl17124.github.io/asmcjr">asmcjr 1.0.0</a>
+    </li>
+    <li class="divider">
+    <li>
+      <a href="news/index.html">Changelog</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -71,7 +94,9 @@
 <a href="#asmcjr---" class="anchor"></a>asmcjr <img src="https://quantoid.net/files/images/booksticker.png" width="140" align="right"><br>
 </h1></div>
 
-<p>This package supports the book <a href="https://www.crcpress.com/Analyzing-Spatial-Models-of-Choice-and-Judgment-with-R/Armstrong-II-Bakker-Carroll-Hare-Poole-Rosenthal/p/book/9781466517158">“Analyzing Spatial Models of Choice and Judgment with R”</a>. In its second edition, much of the R code has been streamlined. This package contains all of the data and functions to replicate the analyses in the book.</p>
+<p>This package supports the book <a href="https://www.routledge.com/Analyzing-Spatial-Models-of-Choice-and-Judgment/II-Bakker-Carroll-Hare-Poole-Rosenthal/p/book/9781138715332">“2nd Edition Analyzing Spatial Models of Choice and Judgment”</a>. In its second edition, much of the R code has been streamlined. This package contains all of the data and functions to replicate the analyses in the book.</p>
+<p><br></p>
+<p><img src="https://raw.githack.com/yl17124/asmcjr/master/images/book_image.jpg" width="240" align="center"></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -95,7 +120,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>, dependencies=<span class="fl">TRUE</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://devtools.r-lib.org">devtools</a></span>)
-<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"davidaarmstrong/asmcjr"</span>)
+<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"yl17124/asmcjr"</span>)
 </pre></div>
 </div>
 <div id="for-windows" class="section level4">
@@ -112,7 +137,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>, dependencies=<span class="fl">TRUE</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://devtools.r-lib.org">devtools</a></span>)
-<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"davidaarmstrong/asmcjr"</span>)
+<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"yl17124/asmcjr"</span>)
 </pre></div>
 <p><br></p>
 </div>
@@ -141,7 +166,7 @@
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">asmcjr</span>)
-<span class="kw">example_result_graph</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/asmcjr/man/ggplot.resphist.html">ggplot.resphist</a></span>(<span class="kw">example_result_france</span>, addStim=<span class="fl">TRUE</span>, weights=<span class="st">"negative"</span>, xlab = <span class="st">"Left-Right"</span>) <span class="op">+</span>
+<span class="kw">example_result_graph</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/asmcjr/man/ggplot.resphist.html">ggplot.resphist</a></span>(<span class="kw">example_result_france</span>, addStim = <span class="fl">TRUE</span>, weights = <span class="st">"negative"</span>, xlab = <span class="st">"Left-Right"</span>) <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(legend.position = <span class="st">"bottom"</span>, aspect.ratio = <span class="fl">1</span>) <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span>(shape = <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span>(override.aes = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(size = <span class="fl">4</span>),nrow = <span class="fl">3</span>)) <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(shape = <span class="st">"Party"</span>, colour = <span class="st">"Party"</span>)
@@ -310,10 +335,14 @@ Execution halted
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Dave Armstrong <br><small class="roles"> Author, maintainer </small>  </li>
-<li>Royce Carroll <br><small class="roles"> Author </small>  </li>
-<li>Chris Hare <br><small class="roles"> Author </small>  </li>
-<li>Ryan Bakker <br><small class="roles"> Author </small>  </li>
+<li>
+<a href="https://github.com/davidaarmstrong">Dave Armstrong</a> <br><small class="roles"> Author, maintainer </small>  </li>
+<li>
+<a href="https://www.essex.ac.uk/people/carro40801/royce-carroll">Royce Carroll</a> <br><small class="roles"> Author </small>  </li>
+<li>
+<a href="https://www.christopherdhare.com/">Chris Hare</a> <br><small class="roles"> Author </small>  </li>
+<li>
+<a href="https://www.essex.ac.uk/people/bakke28107/ryan-bakker">Ryan Bakker</a> <br><small class="roles"> Author </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
@@ -330,7 +359,7 @@ Execution halted
 
 
       <footer><div class="copyright">
-  <p>Developed by Dave Armstrong, Royce Carroll, Chris Hare, Ryan Bakker.</p>
+  <p>Developed by <a href="https://github.com/davidaarmstrong">Dave Armstrong</a>, <a href="https://www.essex.ac.uk/people/carro40801/royce-carroll">Royce Carroll</a>, <a href="https://www.christopherdhare.com/">Chris Hare</a>, <a href="https://www.essex.ac.uk/people/bakke28107/ryan-bakker">Ryan Bakker</a>.</p>
 </div>
 
 <div class="pkgdown">
