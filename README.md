@@ -16,10 +16,11 @@ You can install using the `install_github()` function from the `devtools` packag
 - [x] [GNU Fortran(gfortran 8.2)](https://github.com/fxcoudert/gfortran-for-macOS/releases)
 - [x] [Xcode Developer Tools 11](https://developer.apple.com/support/xcode/)
 - [x] [Clang (clang-8.0.0)](https://cran.r-project.org/bin/macosx/tools/) if you have not updated R to 4.0.0 version.
+
 ```r
 install.packages("devtools", dependencies=TRUE)
 library(devtools)
-devtools::install_github("davidaarmstrong/asmcjr")
+devtools::install_github("yl17124/asmcjr")
 ```
 
 #### For Windows:
@@ -29,14 +30,14 @@ devtools::install_github("davidaarmstrong/asmcjr")
 ```r
 install.packages("devtools", dependencies=TRUE)
 library(devtools)
-devtools::install_github("davidaarmstrong/asmcjr")
+devtools::install_github("yl17124/asmcjr")
 ```
 
 <br />
 
 ## Usage 
 
-#### Example 1: Running Bayesian Aldrich-Mckelvey Scaling on the French module of the 2009 European Election Study
+#### Running Bayesian Aldrich-Mckelvey Scaling on the French module of the 2009 European Election Study
 
 ```r
 data(franceEES2009)
@@ -48,9 +49,9 @@ head(franceEES2009, n = 10)
 </p>
 
 ```r
-library(asmcjr)
+library(basicspace)
 example_result_france <- aldmck(franceEES2009, respondent=1, 
-                                polarity=2,missing=c(77,88,89), verbose=FALSE)
+                                polarity = 2,missing = c(77,88,89), verbose = FALSE)
                                 
 str(example_result_france)                        
 ```
@@ -60,10 +61,11 @@ str(example_result_france)
 
 ```r
 library(ggplot2)
+library(asmcjr)
 example_result_graph <- ggplot.resphist(example_result_france, addStim=TRUE, weights="negative", xlab = "Left-Right") +
-    theme(legend.position="bottom", aspect.ratio=1) +
-    guides(shape = guide_legend(override.aes = list(size = 4),nrow=3)) +
-    labs(shape="Party", colour="Party")
+    theme(legend.position = "bottom", aspect.ratio = 1) +
+    guides(shape = guide_legend(override.aes = list(size = 4),nrow = 3)) +
+    labs(shape = "Party", colour = "Party")
 print(example_result_graph)
 ```
 
@@ -72,63 +74,6 @@ print(example_result_graph)
 </p>
 
  <br />
-
-#### Example 2: Running W-NOMINATE Scaling on 7th Taiwan Legislative Roll Calls 
-```r
-library(readr)
-legis_7th_Taiwan <- read_csv("https://raw.githack.com/yl17124/asmcjr/master/images/legis_7th_Taiwan.csv")
-head(legis_7th_Taiwan, n =10)
-```
-
-<p align="center">
-  <img src="https://raw.githack.com/yl17124/asmcjr/master/images/second_example_df1.png">
-</p>
-
-```r
-library(pscl)
-pscl_df <- rollcall(legis_7th_Taiwan[3:ncol(legis_7th_Taiwan)],
-                    yea = 1 , nay = 2, notInLegis = c(3,4,5), legis.names = legis_7th_Taiwan$legis.names,
-                    vote.names = colnames(legis_7th_Taiwan[3:ncol(legis_7th_Taiwan)]),
-                    desc="The 7th Taiwan Legislative Roll Call")
-
-summary(pscl_df, verbose=FALSE)  
-```
-
-<p align="left">
-  <img width="520" height="395"  src="https://raw.githack.com/yl17124/asmcjr/master/mastersecond_example_pscl.png">
-</p>
-
-
-
-```r
-library(ggpubr)
-library(ggplot2)
-library(wnominate)
-result <- wnominate(pscl_df, ubeta = 15, uweights = 0.5,
-                    dims = 2, minvotes = 20 , lop = 0.025, trials = 3, polarity = c("邱議瑩", "丁守中"), verbose = FALSE)
-                    
-example_result_graph2 <- rownames_to_column(result$legislators, "legis.names") %>%
-  left_join(legis_7th_Taiwan[c("legis.names", "party")], by = "legis.names") %>%
-  mutate(coord2D.WEIGHT = coord2D*(result$weights[2])/(result$weights[1])) %>%
-  ggscatter(x = "coord1D", y = "coord2D.WEIGHT",
-            palette = "jco", shape = "party", point = FALSE,
-            ellipse = TRUE, ellipse.type = "confidence", size = 4) +
-  scale_y_continuous(limits = c(-0.5, 0.5) ) +
-  scale_x_continuous(limits = c(-1, 1)) +
-  geom_text(aes(label = factor(party), colour = party), size = 3,
-            family="Helvetica", face = "bold", show.legend = FALSE, vjust = -0.5) +
-  scale_colour_manual(values = c("#0000ff","#008964","#8b0017"), breaks = c("K", "D","N"))  +
-  theme(legend.position = "none") +
-  labs(y = "2nd Dimension", x = "1st Dimension") 
-
-print(example_result_graph2)
-```
-
-<p align="center">
-  <img width="540" height="390" src="https://raw.githack.com/yl17124/asmcjr/master/first_example_plot2.png">
-</p>
-
-<br />
 
 
 ## Potential Installation Errors
