@@ -95,7 +95,7 @@ summary(pscl_df, verbose=FALSE)
 ```
 
 <p align="left">
-  <img width="520" height="395"  src="https://raw.githack.com/yl17124/asmcjr/master/second_example_pscl.png">
+  <img width="520" height="395"  src="https://raw.githack.com/yl17124/asmcjr/master/mastersecond_example_pscl.png">
 </p>
 
 
