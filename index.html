@@ -120,9 +120,9 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<div id="example-1-running-bayesian-aldrich-mckelvey-scaling-on-the-french-module-of-the-2009-european-election-study" class="section level4">
+<div id="running-bayesian-aldrich-mckelvey-scaling-on-the-french-module-of-the-2009-european-election-study" class="section level4">
 <h4 class="hasAnchor">
-<a href="#example-1-running-bayesian-aldrich-mckelvey-scaling-on-the-french-module-of-the-2009-european-election-study" class="anchor"></a>Example 1: Running Bayesian Aldrich-Mckelvey Scaling on the French module of the 2009 European Election Study</h4>
+<a href="#running-bayesian-aldrich-mckelvey-scaling-on-the-french-module-of-the-2009-european-election-study" class="anchor"></a>Running Bayesian Aldrich-Mckelvey Scaling on the French module of the 2009 European Election Study</h4>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="kw">franceEES2009</span>)
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">franceEES2009</span>, n = <span class="fl">10</span>)
@@ -130,9 +130,9 @@
 <p align="center">
 <img src="https://raw.githack.com/yl17124/asmcjr/master/images/first_example_df1.png"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">asmcjr</span>)
-<span class="kw">example_result_france</span> <span class="op">&lt;-</span> <span class="fu">aldmck</span>(<span class="kw">franceEES2009</span>, respondent=<span class="fl">1</span>, 
-                                polarity=<span class="fl">2</span>,missing=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">77</span>,<span class="fl">88</span>,<span class="fl">89</span>), verbose=<span class="fl">FALSE</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">basicspace</span>)
+<span class="kw">example_result_france</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/basicspace/man/aldmck.html">aldmck</a></span>(<span class="kw">franceEES2009</span>, respondent=<span class="fl">1</span>, 
+                                polarity = <span class="fl">2</span>,missing = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">77</span>,<span class="fl">88</span>,<span class="fl">89</span>), verbose = <span class="fl">FALSE</span>)
                                 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(<span class="kw">example_result_france</span>)                        
 </pre></div>
@@ -140,62 +140,15 @@
 <img width="650" height="270" src="https://raw.githack.com/yl17124/asmcjr/master/images/first_example_df2.png"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">asmcjr</span>)
 <span class="kw">example_result_graph</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/asmcjr/man/ggplot.resphist.html">ggplot.resphist</a></span>(<span class="kw">example_result_france</span>, addStim=<span class="fl">TRUE</span>, weights=<span class="st">"negative"</span>, xlab = <span class="st">"Left-Right"</span>) <span class="op">+</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(legend.position=<span class="st">"bottom"</span>, aspect.ratio=<span class="fl">1</span>) <span class="op">+</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span>(shape = <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span>(override.aes = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(size = <span class="fl">4</span>),nrow=<span class="fl">3</span>)) <span class="op">+</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(shape=<span class="st">"Party"</span>, colour=<span class="st">"Party"</span>)
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(legend.position = <span class="st">"bottom"</span>, aspect.ratio = <span class="fl">1</span>) <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span>(shape = <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span>(override.aes = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(size = <span class="fl">4</span>),nrow = <span class="fl">3</span>)) <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(shape = <span class="st">"Party"</span>, colour = <span class="st">"Party"</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">example_result_graph</span>)
 </pre></div>
 <p align="center">
 <img width="500" height="500" src="https://raw.githack.com/yl17124/asmcjr/master/images/first_example_plot.png"></p>
-<p><br></p>
-</div>
-<div id="example-2-running-w-nominate-scaling-on-7th-taiwan-legislative-roll-calls" class="section level4">
-<h4 class="hasAnchor">
-<a href="#example-2-running-w-nominate-scaling-on-7th-taiwan-legislative-roll-calls" class="anchor"></a>Example 2: Running W-NOMINATE Scaling on 7th Taiwan Legislative Roll Calls</h4>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://readr.tidyverse.org">readr</a></span>)
-<span class="kw">legis_7th_Taiwan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span>(<span class="st">"https://raw.githack.com/yl17124/asmcjr/master/images/legis_7th_Taiwan.csv"</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">legis_7th_Taiwan</span>, n =<span class="fl">10</span>)
-</pre></div>
-<p align="center">
-<img src="https://raw.githack.com/yl17124/asmcjr/master/images/second_example_df1.png"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://github.com/atahk/pscl">pscl</a></span>)
-<span class="kw">pscl_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pscl/man/rollcall.html">rollcall</a></span>(<span class="kw">legis_7th_Taiwan</span>[<span class="fl">3</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span>(<span class="kw">legis_7th_Taiwan</span>)],
-                    yea = <span class="fl">1</span> , nay = <span class="fl">2</span>, notInLegis = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>), legis.names = <span class="kw">legis_7th_Taiwan</span><span class="op">$</span><span class="kw">legis.names</span>,
-                    vote.names = <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="kw">legis_7th_Taiwan</span>[<span class="fl">3</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span>(<span class="kw">legis_7th_Taiwan</span>)]),
-                    desc=<span class="st">"The 7th Taiwan Legislative Roll Call"</span>)
-
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw">pscl_df</span>, verbose=<span class="fl">FALSE</span>)  
-</pre></div>
-<p align="left">
-<img width="520" height="395" src="https://raw.githack.com/yl17124/asmcjr/master/second_example_pscl.png"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://rpkgs.datanovia.com/ggpubr">ggpubr</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">wnominate</span>)
-<span class="kw">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/wnominate/man/wnominate.html">wnominate</a></span>(<span class="kw">pscl_df</span>, ubeta = <span class="fl">15</span>, uweights = <span class="fl">0.5</span>,
-                    dims = <span class="fl">2</span>, minvotes = <span class="fl">20</span> , lop = <span class="fl">0.025</span>, trials = <span class="fl">3</span>, polarity = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"邱議瑩"</span>, <span class="st">"丁守中"</span>), verbose = <span class="fl">FALSE</span>)
-                    
-<span class="kw">example_result_graph2</span> <span class="op">&lt;-</span> <span class="fu">rownames_to_column</span>(<span class="kw">result</span><span class="op">$</span><span class="kw">legislators</span>, <span class="st">"legis.names"</span>) <span class="op">%&gt;%</span>
-  <span class="fu">left_join</span>(<span class="kw">legis_7th_Taiwan</span>[<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"legis.names"</span>, <span class="st">"party"</span>)], by = <span class="st">"legis.names"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(coord2D.WEIGHT = <span class="kw">coord2D</span><span class="op">*</span>(<span class="kw">result</span><span class="op">$</span><span class="kw">weights</span>[<span class="fl">2</span>])<span class="op">/</span>(<span class="kw">result</span><span class="op">$</span><span class="kw">weights</span>[<span class="fl">1</span>])) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/ggpubr/man/ggscatter.html">ggscatter</a></span>(x = <span class="st">"coord1D"</span>, y = <span class="st">"coord2D.WEIGHT"</span>,
-            palette = <span class="st">"jco"</span>, shape = <span class="st">"party"</span>, point = <span class="fl">FALSE</span>,
-            ellipse = <span class="fl">TRUE</span>, ellipse.type = <span class="st">"confidence"</span>, size = <span class="fl">4</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(limits = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>) ) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span>(limits = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span>)) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(label = <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="kw">party</span>), colour = <span class="kw">party</span>), size = <span class="fl">3</span>,
-            family=<span class="st">"Helvetica"</span>, face = <span class="st">"bold"</span>, show.legend = <span class="fl">FALSE</span>, vjust = <span class="op">-</span><span class="fl">0.5</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span>(values = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"#0000ff"</span>,<span class="st">"#008964"</span>,<span class="st">"#8b0017"</span>), breaks = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"K"</span>, <span class="st">"D"</span>,<span class="st">"N"</span>))  <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(legend.position = <span class="st">"none"</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(y = <span class="st">"2nd Dimension"</span>, x = <span class="st">"1st Dimension"</span>) 
-
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">example_result_graph2</span>)
-</pre></div>
-<p align="center">
-<img width="540" height="390" src="https://raw.githack.com/yl17124/asmcjr/master/first_example_plot2.png"></p>
 <p><br></p>
 </div>
 </div>
