@@ -1,9 +1,9 @@
-\name{ggplot.blackbox}
-\alias{ggplot.blackbox}
+\name{plot_blackbox}
+\alias{plot_blackbox}
 \title{Alternative plotting function for Blackbox Scaling Results}
 \description{Uses \code{ggplot2} to produce alternative visualizations for results of the \code{blackbox} function.  Makes a scatterplot of respondents on the estimated latent dimensions.  }
 \usage{
-ggplot.blackbox(result, dims, whichRes = NULL, groupVar = NULL, issueVector = NULL,
+plot_blackbox(result, dims, whichRes = NULL, groupVar = NULL, issueVector = NULL,
     data = NULL, missing = NULL, rug = FALSE, xlab = NULL, main = NULL,
     ylab = NULL, nudgeX = NULL, nudgeY = NULL, ...)
 }

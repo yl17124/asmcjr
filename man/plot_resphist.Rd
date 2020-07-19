@@ -1,9 +1,9 @@
-\name{ggplot.resphist}
-\alias{ggplot.resphist}
+\name{plot_resphist}
+\alias{plot_resphist}
 \title{Alternative plotting function for Aldrich-McKelvel Results}
 \description{Uses \code{ggplot2} to produce alternative visualizations for results of the \code{aldmck} or \code{blackbox}functions.  }
 \usage{
-ggplot.resphist(result, groupVar = NULL, facetVar = NULL, addStim = FALSE,
+plot_resphist(result, groupVar = NULL, facetVar = NULL, addStim = FALSE,
     scaleDensity=TRUE, weights = c("all", "positive", "negative"),
     xlab = NULL, main = NULL, ylab = NULL, whichRes = NULL,
     dim = NULL, ...)
