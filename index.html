@@ -44,23 +44,10 @@
   </a>
 </li>
 <li>
-  <a href="articles/asmcjr.html">Get started</a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="news/index.html">Changelog</a>
-</li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/davidaarmstrong/asmcjr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -125,14 +112,14 @@
 <div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">franceEES2009</span>)
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">franceEES2009</span>, <span class="kw">n</span> <span class="kw">=</span> <span class="fl">10</span>)</pre></div>
 <p align="center">
-<img src="https://github.com/yl17124/figures/blob/master/first_example_df1.png"></p>
+<img src="https://raw.githack.com/yl17124/asmcjr/yl17124-patch-2/images/first_example_df1.png"></p>
 <div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">asmcjr</span>)
 <span class="no">example_result_france</span> <span class="kw">&lt;-</span> <span class="fu">aldmck</span>(<span class="no">franceEES2009</span>, <span class="kw">respondent</span><span class="kw">=</span><span class="fl">1</span>,
                                 <span class="kw">polarity</span><span class="kw">=</span><span class="fl">2</span>,<span class="kw">missing</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">77</span>,<span class="fl">88</span>,<span class="fl">89</span>), <span class="kw">verbose</span><span class="kw">=</span><span class="fl">FALSE</span>)
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(<span class="no">example_result_france</span>)</pre></div>
 <p align="left">
-<img width="650" height="270" src="https://github.com/yl17124/figures/blob/master/first_example_df2.png"></p>
+<img width="650" height="270" src="https://raw.githack.com/yl17124/asmcjr/yl17124-patch-2/images/first_example_df2.png"></p>
 <div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
 <span class="no">example_result_graph</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/ggplot.resphist.html">ggplot.resphist</a></span>(<span class="no">example_result_france</span>, <span class="kw">addStim</span><span class="kw">=</span><span class="fl">TRUE</span>, <span class="kw">weights</span><span class="kw">=</span><span class="st">"negative"</span>, <span class="kw">xlab</span> <span class="kw">=</span> <span class="st">"Left-Right"</span>) +
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">legend.position</span><span class="kw">=</span><span class="st">"bottom"</span>, <span class="kw">aspect.ratio</span><span class="kw">=</span><span class="fl">1</span>) +
@@ -140,7 +127,7 @@
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="kw">shape</span><span class="kw">=</span><span class="st">"Party"</span>, <span class="kw">colour</span><span class="kw">=</span><span class="st">"Party"</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">example_result_graph</span>)</pre></div>
 <p align="center">
-<img width="500" height="500" src="https://github.com/yl17124/figures/blob/master/first_example_plot.png"></p>
+<img width="500" height="500" src="https://raw.githack.com/yl17124/asmcjr/yl17124-patch-2/images/first_example_plot.png"></p>
 <p><br></p>
 </div>
 <div id="example-2-running-w-nominate-scaling-on-7th-taiwan-legislative-roll-calls" class="section level2">
@@ -150,7 +137,7 @@
 <span class="no">legis_7th_Taiwan</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span>(<span class="st">"https://raw.githubusercontent.com/yl17124/figures/master/legis_7th_Taiwan.csv"</span>)
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">legis_7th_Taiwan</span>, <span class="kw">n</span> <span class="kw">=</span><span class="fl">10</span>)</pre></div>
 <p align="center">
-<img src="https://github.com/yl17124/figures/blob/master/second_example_df1.png"></p>
+<img src="https://raw.githack.com/yl17124/asmcjr/yl17124-patch-2/images/second_example_df1.png"></p>
 <div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pscl</span>)
 <span class="no">pscl_df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pscl/man/rollcall.html">rollcall</a></span>(<span class="no">legis_7th_Taiwan</span>[<span class="fl">3</span>:<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span>(<span class="no">legis_7th_Taiwan</span>)],
                     <span class="kw">yea</span> <span class="kw">=</span> <span class="fl">1</span> , <span class="kw">nay</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">notInLegis</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>), <span class="kw">legis.names</span> <span class="kw">=</span> <span class="no">legis_7th_Taiwan</span>$<span class="no">legis.names</span>,
@@ -159,7 +146,7 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">pscl_df</span>, <span class="kw">verbose</span><span class="kw">=</span><span class="fl">FALSE</span>)</pre></div>
 <p align="left">
-<img width="520" height="395" src="https://github.com/yl17124/figures/blob/master/second_example_pscl.png"></p>
+<img width="520" height="395" src="https://raw.githack.com/yl17124/asmcjr/yl17124-patch-2/images/second_example_pscl.png"></p>
 <div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggpubr</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">wnominate</span>)
@@ -319,16 +306,7 @@ Execution halted
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="links">
-<h2>Links</h2>
-<ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/davidaarmstrong/asmcjr/">https://​github.com/​davidaarmstrong/​asmcjr/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/davidaarmstrong/asmcjr/issues">https://​github.com/​davidaarmstrong/​asmcjr/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
+    <div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
 <li>GPL (&gt;=2)</li>
@@ -343,13 +321,10 @@ Execution halted
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://www.essex.ac.uk/people/carro40801/royce-carroll">Dave Armstrong</a> <br><small class="roles"> Author, maintainer </small>  </li>
-<li>
-<a href="https://www.essex.ac.uk/people/carro40801/royce-carroll">Royce Carroll</a> <br><small class="roles"> Author </small>  </li>
+<li>Dave Armstrong <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Royce Carroll <br><small class="roles"> Author </small>  </li>
 <li>Chris Hare <br><small class="roles"> Author </small>  </li>
-<li>
-<a href="https://www.essex.ac.uk/people/bakke28107/ryan-bakker">Ryan Bakker</a> <br><small class="roles"> Author </small>  </li>
+<li>Ryan Bakker <br><small class="roles"> Author </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
@@ -358,7 +333,6 @@ Execution halted
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.com/yl17124/asmcjr"><img src="https://travis-ci.com/yl17124/asmcjr.svg?branch=master" alt="Build Status"></a></li>
-<li><a href="https://codecov.io/gh/yl17124/asmcjr"><img src="https://codecov.io/gh/yl17124/asmcjr/branch/master/graph/badge.svg" alt="codecov"></a></li>
 </ul>
 </div>
 </div>
@@ -366,7 +340,7 @@ Execution halted
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://www.essex.ac.uk/people/carro40801/royce-carroll">Dave Armstrong</a>, <a href="https://www.essex.ac.uk/people/carro40801/royce-carroll">Royce Carroll</a>, Chris Hare, <a href="https://www.essex.ac.uk/people/bakke28107/ryan-bakker">Ryan Bakker</a>.</p>
+  <p>Developed by Dave Armstrong, Royce Carroll, Chris Hare, Ryan Bakker.</p>
 </div>
 
 <div class="pkgdown">
