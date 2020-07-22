@@ -1,4 +1,4 @@
-# asmcjr: A R package for ``2nd Edition Analyzing Spatial Models of Choice and Judgment' <img src="https://quantoid.net/files/images/booksticker.png" width="140" align="right" /> <br /> 
+# asmcjr <img src="https://quantoid.net/files/images/booksticker.png" width="140" align="right" /> <br /> 
 
 [![Build Status](https://travis-ci.com/yl17124/asmcjr.svg?branch=master)](https://travis-ci.com/yl17124/asmcjr)
 ![R-CMD-check](https://github.com/yl17124/asmcjr/workflows/R-CMD-check/badge.svg?branch=master&event=check_run)
