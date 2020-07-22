@@ -4,14 +4,10 @@ title: "Potential Installation Errors"
 #date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Potential Installation Errors}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-```{r include=FALSE}
-options(rmarkdown.html_vignette.check_title = FALSE)
-```
-
 
 ## Potential Installation Errors
 If you have received those messages below from macOS or Windows, your device has not installed __JAGS__. Make sure you have installed [JAGS-4](http://www.sourceforge.net/projects/mcmc-jags/files) in your computer. The __asmcjr__ has a dependency on __rjags__ package which is just an interface to the JAGS library, and you need to install it to make them run with __rjags__ on your device.
