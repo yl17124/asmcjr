@@ -8,7 +8,7 @@ This package supports the book ["2nd Edition Analyzing Spatial Models of Choice 
 
 <br />
 
-<img src="https://raw.githack.com/yl17124/asmcjr/master/images/book_image.jpg" width="240" align="center" />  
+<img src="https://raw.githack.com/yl17124/asmcjr/master/vignettes/book_image.jpg" width="240" align="center" />  
 
 
 ## Installation 
@@ -50,7 +50,7 @@ head(franceEES2009, n = 10)
 ```
 
 <p align="center">
-  <img src="https://raw.githack.com/yl17124/asmcjr/master/images/first_example_df1.png">
+  <img src="https://raw.githack.com/yl17124/asmcjr/master/vignettes/first_example_df1.png">
 </p>
 
 ```r
@@ -61,7 +61,7 @@ example_result_france <- aldmck(franceEES2009, respondent=1,
 str(example_result_france)                        
 ```
 <p align="left">
-  <img width="650" height="270" src="https://raw.githack.com/yl17124/asmcjr/master/images/first_example_df2.png">
+  <img width="650" height="270" src="https://raw.githack.com/yl17124/asmcjr/master/vignettes/first_example_df2.png">
 </p>
 
 ```r
@@ -75,7 +75,7 @@ print(example_result_graph)
 ```
 
 <p align="center">
-  <img width="500" height="500" src="https://raw.githack.com/yl17124/asmcjr/master/images/first_example_plot.png">
+  <img width="500" height="500" src="https://raw.githack.com/yl17124/asmcjr/master/vignettes/first_example_plot.png">
 </p>
 
  <br />
