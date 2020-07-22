@@ -27,14 +27,34 @@ template:
 development:
   mode: auto
 
-navbar:
-  structure:
-    left:  [home, reference, news]
-    right: [github]
 
-news:
- releases:
- - text: "asmcjr 1.0.1"
-   href: https://yl17124.github.io/asmcjr
+navbar:
+  type: inverse
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: "How To"
+      menu: 
+      -  text: Installation
+         href: articles/installation.html
+      -  text: Potential Installation Errors
+         href: articles/errors.html
+      -  text: Support
+         href: articles/support.html
+    - text: "Examples of Use"
+      href: articles/examples.html
+
+
+  right:
+    - icon: fa-newspaper-o
+      text: "news"
+      href: news/index.html
+    - icon: fa-file-code-o 
+      text: "functions"
+      href: reference/index.html
+    - icon: fa-github fa-lg
+      text: ""
+      href: https://github.com/yl17124/asmcjr
+      
    
 
