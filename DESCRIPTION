@@ -1,7 +1,7 @@
 Package: asmcjr
 Type: Package
 Title: Analyzing Spatial Models of Choice and Judgment with R
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: c(person("Dave", "Armstrong", role=c("aut", "cre"), email="dave@quantoid.net"), 
              person("Royce", "Carroll", role="aut"), 
              person("Chris", "Hare", role="aut"), 
@@ -9,7 +9,7 @@ Authors@R: c(person("Dave", "Armstrong", role=c("aut", "cre"), email="dave@quant
              person("Keith", "Poole", role="ctb"), 
              person("Howard", "Rosenthal", role="ctb"),
              person("David", "Liao", role="ctb"))
-Description: Supports the book - Analyzing Spatial Models of Choice and Judgment in R, CRC Press (2014). 
+Description: Supports the book - Analyzing Spatial Models of Choice and Judgment, CRC Press (2020). 
 Depends: R(>= 3.5.0), rjags
 Imports:
     boot,
