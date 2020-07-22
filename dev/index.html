@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>asmcjr: A R package for '2nd Edition Analyzing Spatial Models of Choice and Judgment' • asmcjr</title>
+<title>Analyzing Spatial Models of Choice and Judgment” • asmcjr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="asmcjr: A R package for '2nd Edition Analyzing Spatial Models of Choice and Judgment'">
-<meta property="og:description" content="Supports the book - Analyzing Spatial Models of Choice and Judgment in R, CRC Press (2014). ">
+<script src="pkgdown.js"></script><meta property="og:title" content="Analyzing Spatial Models of Choice and Judgment”">
+<meta property="og:description" content="Supports the book - 2nd Edition Analyzing Spatial Models of Choice and Judgment, CRC Press (2020). ">
 <meta name="robots" content="noindex">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -27,7 +27,7 @@
 </head>
 <body data-spy="scroll" data-target="#toc">
     <div class="container template-home">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">asmcjr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.1</span>
       </span>
     </div>
 
@@ -46,36 +46,52 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fa fa-home"></span>
      
   </a>
 </li>
-<li>
-  <a href="reference/index.html">Reference</a>
-</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    News
+    How To
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li class="dropdown-header">Releases</li>
-    <li>
-      <a href="https://yl17124.github.io/asmcjr">asmcjr 1.0.1</a>
+<li>
+      <a href="articles/installation.html">Installation</a>
     </li>
-    <li class="divider">
     <li>
-      <a href="news/index.html">Changelog</a>
+      <a href="articles/errors.html">Potential Installation Errors</a>
+    </li>
+    <li>
+      <a href="articles/support.html">Support</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="articles/examples.html">Examples of Use</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/davidaarmstrong/asmcjr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="news/index.html">
+    <span class="fa fa-newspaper-o"></span>
      
+    news
+  </a>
+</li>
+<li>
+  <a href="reference/index.html">
+    <span class="fa fa-file-code-o"></span>
+     
+    functions
+  </a>
+</li>
+<li>
+  <a href="https://github.com/yl17124/asmcjr">
+    <span class="fa fa-github fa-lg"></span>
+     
+    
   </a>
 </li>
       </ul>
@@ -97,7 +113,7 @@
 
 <p>This package supports the book <a href="https://www.routledge.com/Analyzing-Spatial-Models-of-Choice-and-Judgment/II-Bakker-Carroll-Hare-Poole-Rosenthal/p/book/9781138715332">“2nd Edition Analyzing Spatial Models of Choice and Judgment”</a>. In its second edition, much of the R code has been streamlined. This package contains all of the data and functions to replicate the analyses in the book.</p>
 <p><br></p>
-<p><img src="https://raw.githack.com/yl17124/asmcjr/master/images/book_image.jpg" width="240" align="center"></p>
+<p><img src="https://raw.githack.com/yl17124/asmcjr/master/vignettes/book_image.jpg" width="240" align="center"></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -154,7 +170,7 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">franceEES2009</span>, n = <span class="fl">10</span>)
 </pre></div>
 <p align="center">
-<img src="https://raw.githack.com/yl17124/asmcjr/master/images/first_example_df1.png"></p>
+<img src="https://raw.githack.com/yl17124/asmcjr/master/vignettes/first_example_df1.png"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">basicspace</span>)
 <span class="kw">example_result_france</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/basicspace/man/aldmck.html">aldmck</a></span>(<span class="kw">franceEES2009</span>, respondent=<span class="fl">1</span>, 
@@ -163,7 +179,7 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(<span class="kw">example_result_france</span>)                        
 </pre></div>
 <p align="left">
-<img width="650" height="270" src="https://raw.githack.com/yl17124/asmcjr/master/images/first_example_df2.png"></p>
+<img width="650" height="270" src="https://raw.githack.com/yl17124/asmcjr/master/vignettes/first_example_df2.png"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">asmcjr</span>)
@@ -174,7 +190,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">example_result_graph</span>)
 </pre></div>
 <p align="center">
-<img width="500" height="500" src="https://raw.githack.com/yl17124/asmcjr/master/images/first_example_plot.png"></p>
+<img width="500" height="500" src="https://raw.githack.com/yl17124/asmcjr/master/vignettes/first_example_plot.png"></p>
 <p><br></p>
 </div>
 </div>
