@@ -1,17 +1,18 @@
 citHeader("To cite 'asmcjr' in publications use:")
 
 citEntry(entry = "Manual",
-  title = "Analyzing Spatial Models of Choice and Judgment with R",
+  title = "asmcjr: An R package for the book '2nd Edition Analyzing Spatial Models of Choice and Judgment'",
   author = personList(as.person("David A. Armstrong"),
                       as.person("Christopher Hare"),
                       as.person("Ryan Bakker"),
                       as.person("Royce Carroll"),
                       as.person("Christopher Hare"),
                       as.person("Keith T. Poole"),
-                      as.person("Howard Rosenthal")),
+                      as.person("Howard Rosenthal"),
+                      as.person("David Liao")),
   year = "2020",
   note = "R package version 1.0.1",
   textVersion  =  
-  paste("David A. Armstrong, II, Ryan Bakker, Royce Carroll, Christopher Hare, Keith T. Poole, Howard Rosenthal (2020)",
-        "Analyzing Spatial Models of Choice and Judgment with R", "CRC Press")) 
+  paste("David A. Armstrong, II, Ryan Bakker, Royce Carroll, Christopher Hare, Keith T. Poole, Howard Rosenthal, David Liao (2020).",
+        "asmcjr: An R package for the book '2nd Edition Analyzing Spatial Models of Choice and Judgment")) 
 
