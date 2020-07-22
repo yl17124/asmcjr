@@ -29,7 +29,7 @@ development:
 
 navbar:
   structure:
-    left:  [home, reference, articles, tutorials, news]
+    left:  [home, reference, news]
     right: [github]
 
 news:
@@ -37,6 +37,4 @@ news:
  - text: "asmcjr 1.0.1"
    href: https://yl17124.github.io/asmcjr
    
-reference:
 
-tutorials:
