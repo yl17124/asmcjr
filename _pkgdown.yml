@@ -1,7 +1,7 @@
-url: https://yl17124.github.io/asmcjr
+url: https://yl17124.github.io/asmcjr/
 
 home:
-  title: Analyzing Spatial Models of Choice and Judgment with R
+  title: "asmcjr: A R package for '2nd Edition Analyzing Spatial Models of Choice and Judgment"
 
 authors:
   Dave Armstrong:
@@ -25,10 +25,18 @@ template:
     ganalytics: UA-172937037-1
 
 development:
-  mode: auto
+  mode: devel
 
+navbar:
+  structure:
+    left:  [home, reference, articles, tutorials, news]
+    right: [github]
 
 news:
  releases:
- - text: "asmcjr 1.0.0"
+ - text: "asmcjr 1.0.1"
    href: https://yl17124.github.io/asmcjr
+   
+reference:
+
+tutorials:
