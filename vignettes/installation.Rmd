@@ -1,0 +1,38 @@
+---
+title: "Installation"
+#author: "Vignette Author"
+#date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+You can install using the `install_github()` function from the `devtools` package. __asmcjr__ requires compilation, so Windows users will have to install [Rtools](https://cran.r-project.org/bin/windows/Rtools/) first. For Mac users, you need to  make sure you have already installed latest [GNU Fortran(gfortran 8.2)](https://github.com/fxcoudert/gfortran-for-macOS/releases) and [Xcode Developer Tools](https://developer.apple.com/support/xcode/). Please also make sure you have installed [Clang (clang-8.0.0.pkg)](https://cran.r-project.org/bin/macosx/tools/) if you have not updated R to 4.0.0 version. In order to use __rjags__ package for the Bayesian framework analysis with __asmcjr__, both users  need to install [JAGS](https://sourceforge.net/projects/mcmc-jags/files/JAGS/) in advance. Therefore to install __asmcjr__ in your R environment, the __devtools__ package must also be installed and loaded in R beforehand. 
+Before installing __asmcjr__ in [R](), please make sure you have those steps finished.
+
+#### For macOS:
+- [x] [JAGS](https://sourceforge.net/projects/mcmc-jags/files/JAGS/)
+- [x] [GNU Fortran(gfortran 8.2)](https://github.com/fxcoudert/gfortran-for-macOS/releases)
+- [x] [Xcode Developer Tools 11](https://developer.apple.com/support/xcode/)
+- [x] [Clang (clang-8.0.0)](https://cran.r-project.org/bin/macosx/tools/) if you have not updated R to 4.0.0 version.
+
+```
+install.packages("devtools", dependencies=TRUE)
+library(devtools)
+devtools::install_github("yl17124/asmcjr")
+```
+
+
+#### For Windows:
+- [x] [JAGS](https://sourceforge.net/projects/mcmc-jags/files/JAGS/)
+- [x] [Rtools](https://cran.r-project.org/bin/windows/Rtools/)
+
+```
+install.packages("devtools", dependencies=TRUE)
+library(devtools)
+devtools::install_github("yl17124/asmcjr")
+```
+

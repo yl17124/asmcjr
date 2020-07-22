@@ -35,11 +35,11 @@ navbar:
       href: index.html
     - text: "How To"
       menu: 
-      -  text: Installation
+      -  text: "Installation"
          href: articles/installation.html
-      -  text: Potential Installation Errors
+      -  text: "Potential Installation Errors"
          href: articles/errors.html
-      -  text: Support
+      -  text: "Support"
          href: articles/support.html
     - text: "Examples of Use"
       href: articles/examples.html
