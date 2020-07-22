@@ -114,6 +114,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../articles/asmcjr.html">Get started</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
