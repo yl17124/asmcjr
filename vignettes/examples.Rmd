@@ -9,14 +9,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r global_options, include=FALSE}
-options(rmarkdown.html_vignette.check_title = FALSE)
-
-```
-
-
 
 ## Bayesian Aldrich-Mckelvey Scaling
+
 ```r
 data(franceEES2009)
 head(franceEES2009, n = 10)
@@ -27,24 +22,28 @@ head(franceEES2009, n = 10)
 </p>
 
 ```r
-library(basicspace)
-example_result_france <- aldmck(franceEES2009, respondent=1, 
-                                polarity = 2,missing = c(77,88,89), verbose = FALSE)
-                                
-str(example_result_france)                        
+library(dplyr)
+library(asmcjr)
+aldmck(franceEES2009, respondent=1,
+       polarity = 2,missing = c(77,88,89), verbose = FALSE) %>% 
+  str()                       
 ```
 <p align="left">
   <img width="650" height="270" src="https://raw.githack.com/yl17124/asmcjr/master/vignettes/first_example_df2.png">
 </p>
 
+
 ```r
-library(ggplot2)
+library(dplyr)
 library(asmcjr)
-example_result_graph <- ggplot.resphist(example_result_france, addStim = TRUE, weights = "negative", xlab = "Left-Right") +
-    theme(legend.position = "bottom", aspect.ratio = 1) +
-    guides(shape = guide_legend(override.aes = list(size = 4),nrow = 3)) +
-    labs(shape = "Party", colour = "Party")
-print(example_result_graph)
+library(ggplot2)
+aldmck(franceEES2009, respondent=1,
+       polarity = 2,missing = c(77,88,89), verbose = FALSE) %>% 
+  str() %>%
+  ggplot.resphist(addStim = TRUE, weights = "negative", xlab = "Left-Right") +
+  theme(legend.position = "bottom", aspect.ratio = 1) +
+  guides(shape = guide_legend(override.aes = list(size = 4),nrow = 3)) +
+  labs(shape = "Party", colour = "Party")
 ```
 
 <p align="center">
