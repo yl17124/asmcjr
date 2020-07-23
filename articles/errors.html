@@ -123,13 +123,13 @@
 
     
     
-<div id="potential-installation-errors" class="section level2">
+<p>If you have received those messages below from macOS or Windows by various released versions of R, your device has not installed <strong>JAGS</strong>. Make sure you have installed <a href="http://www.sourceforge.net/projects/mcmc-jags/files">JAGS-4</a> in your computer. The <strong>asmcjr</strong> has a dependency on <strong>rjags</strong> package which is just an interface to the JAGS library, and you need to install it to make them run with <strong>rjags</strong> on your device.</p>
+<div id="macos-latest" class="section level2">
 <h2 class="hasAnchor">
-<a href="#potential-installation-errors" class="anchor"></a>Potential Installation Errors</h2>
-<p>If you have received those messages below from macOS or Windows, your device has not installed <strong>JAGS</strong>. Make sure you have installed <a href="http://www.sourceforge.net/projects/mcmc-jags/files">JAGS-4</a> in your computer. The <strong>asmcjr</strong> has a dependency on <strong>rjags</strong> package which is just an interface to the JAGS library, and you need to install it to make them run with <strong>rjags</strong> on your device.</p>
-<div id="macos-r-devel" class="section level4">
+<a href="#macos-latest" class="anchor"></a>macOS-latest</h2>
+<div id="r-devel" class="section level4">
 <h4 class="hasAnchor">
-<a href="#macos-r-devel" class="anchor"></a>macOS (R: devel)</h4>
+<a href="#r-devel" class="anchor"></a><a href="https://cran.r-project.org/"><em>R</em></a> devel</h4>
 <pre><code>* checking for file ‘.../DESCRIPTION’ ... OK
 * preparing ‘asmcjr’:
 * checking DESCRIPTION meta-information ... OK
@@ -141,37 +141,49 @@ ERROR: dependency ‘rjags’ is not available for package ‘asmcjr’
       -----------------------------------
 ERROR: package installation failed</code></pre>
 </div>
-<div id="macos-r-4-0" class="section level4">
+<div id="r-4-0" class="section level4">
 <h4 class="hasAnchor">
-<a href="#macos-r-4-0" class="anchor"></a>macOS (R: 4.0)</h4>
-<pre><code>* checking for file ‘.../DESCRIPTION’ ... OK
-* preparing ‘asmcjr’:
-* checking DESCRIPTION meta-information ... OK
-* cleaning src
-* installing the package to process help pages
+<a href="#r-4-0" class="anchor"></a><a href="https://cran.r-project.org/"><em>R</em></a> 4.0</h4>
+<pre><code>** inst
+** byte-compile and prepare package for lazy loading
+##[error]Error: package or namespace load failed for ‘rjags’:
+ .onLoad failed in loadNamespace() for 'rjags', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/Users/runner/work/_temp/Library/rjags/libs/rjags.so':
+  dlopen(/Users/runner/work/_temp/Library/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/runner/work/_temp/Library/rjags/libs/rjags.so
+  Reason: image not found
+##[error]Error: package ‘rjags’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘asmcjr’
+* removing ‘/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmpsaj4IF/Rinst7f86903db99/asmcjr’
       -----------------------------------
-* installing *source* package ‘asmcjr’ ...
-** using staged installation
-** libs
-clang -mmacosx-version-min=10.13 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c lbfgs_bu3.c -o lbfgs_bu3.o
-clang -mmacosx-version-min=10.13 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/usr/local/include   -fPIC  -Wall -g -O2  -c registerDynamicSymbol.c -o registerDynamicSymbol.o
-clang -mmacosx-version-min=10.13 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o asmcjr.so lbfgs_bu3.o registerDynamicSymbol.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin18/8.2.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
-ld: warning: directory not found for option '-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin18/8.2.0'
-installing to /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp0nXqch/Rinstc9785a00e5/00LOCK-asmcjr/00new/asmcjr/libs
-** R
+ERROR: package installation failed
+##[error]Error in proc$get_built_file() : Build process failed
+Calls: &lt;Anonymous&gt; ... build_package -&gt; with_envvar -&gt; force -&gt; &lt;Anonymous&gt;
+Execution halted
+##[error]Process completed with exit code 1.
+  Show testthat output</code></pre>
+</div>
+<div id="r-3-6" class="section level4">
+<h4 class="hasAnchor">
+<a href="#r-3-6" class="anchor"></a><a href="https://cran.r-project.org/"><em>R</em></a> 3.6</h4>
+<pre><code>** R
 ** data
 *** moving datasets to lazyload DB
 ** inst
 ** byte-compile and prepare package for lazy loading
-##[error]Error: .onLoad failed in loadNamespace() for 'rjags', details:
+##[error]Error: package or namespace load failed for ‘rjags’:
+ .onLoad failed in loadNamespace() for 'rjags', details:
   call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/runner/runners/2.169.0/work/_temp/Library/rjags/libs/rjags.so':
-  dlopen(/Users/runner/runners/2.169.0/work/_temp/Library/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/runner/runners/2.169.0/work/_temp/Library/rjags/libs/rjags.so
+  error: unable to load shared object '/Users/runner/work/_temp/Library/rjags/libs/rjags.so':
+  dlopen(/Users/runner/work/_temp/Library/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/runner/work/_temp/Library/rjags/libs/rjags.so
   Reason: image not found
+##[error]Error: package ‘rjags’ could not be loaded
 Execution halted
 ERROR: lazy loading failed for package ‘asmcjr’
-* removing ‘/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp0nXqch/Rinstc9785a00e5/asmcjr’
+* removing ‘/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpoLWKaB/Rinst9f5249783d5/asmcjr’
       -----------------------------------
 ERROR: package installation failed
 ##[error]Error in proc$get_built_file() : Build process failed
@@ -179,9 +191,84 @@ Calls: &lt;Anonymous&gt; ... build_package -&gt; with_envvar -&gt; force -&gt; &
 Execution halted
 ##[error]Process completed with exit code 1.</code></pre>
 </div>
-<div id="windows-r-4-0" class="section level4">
+<div id="r-3-5" class="section level4">
 <h4 class="hasAnchor">
-<a href="#windows-r-4-0" class="anchor"></a>Windows (R: 4.0)</h4>
+<a href="#r-3-5" class="anchor"></a><a href="https://cran.r-project.org/"><em>R</em></a> 3.5</h4>
+<pre><code>* checking for file ‘.../DESCRIPTION’ ... OK
+* preparing ‘asmcjr’:
+* checking DESCRIPTION meta-information ... OK
+* cleaning src
+* installing the package to process help pages
+      -----------------------------------
+ERROR: dependencies ‘MCMCpack’, ‘smacof’ are not available for package ‘asmcjr’
+* removing ‘/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpAPITfM/Rinst252755cb64e3/asmcjr’
+      -----------------------------------
+ERROR: package installation failed
+##[error]Error in proc$get_built_file() : Build process failed
+Calls: &lt;Anonymous&gt; ... build_package -&gt; with_envvar -&gt; force -&gt; &lt;Anonymous&gt;
+Execution halted
+##[error]Process completed with exit code 1.</code></pre>
+</div>
+<div id="r-3-4" class="section level4">
+<h4 class="hasAnchor">
+<a href="#r-3-4" class="anchor"></a><a href="https://cran.r-project.org/"><em>R</em></a> 3.4</h4>
+<pre><code>
+* installing *source* package 'asmcjr' ...
+
+** using staged installation
+
+** libs
+
+"c:/rtools40/mingw64/bin/"gcc  -I"C:/R/include" -DNDEBUG          -O2 -Wall  -std=gnu99 -mfpmath=sse -msse2 -mstackrealign  -c lbfgs_bu3.c -o lbfgs_bu3.o
+
+"c:/rtools40/mingw64/bin/"gcc  -I"C:/R/include" -DNDEBUG          -O2 -Wall  -std=gnu99 -mfpmath=sse -msse2 -mstackrealign  -c registerDynamicSymbol.c -o registerDynamicSymbol.o
+
+c:/rtools40/mingw64/bin/gcc -shared -s -static-libgcc -o asmcjr.dll tmp.def lbfgs_bu3.o registerDynamicSymbol.o -LC:/R/bin/x64 -lRlapack -LC:/R/bin/x64 -lRblas -lgfortran -lm -lquadmath -LC:/R/bin/x64 -lR
+
+installing to C:/Users/RUNNER~1/AppData/Local/Temp/RtmpiAXdl6/Rinstab02f562d08/00LOCK-asmcjr/00new/asmcjr/libs/x64
+
+** R
+
+** data
+
+*** moving datasets to lazyload DB
+
+** inst
+
+** byte-compile and prepare package for lazy loading
+
+
+Make sure you have installed JAGS-4.x.y.exe (for any x &gt;=0, y&gt;=0) from
+
+http://www.sourceforge.net/projects/mcmc-jags/files
+
+
+
+##[error]Error: package 'rjags' could not be loaded
+
+Execution halted
+
+ERROR: lazy loading failed for package 'asmcjr'
+
+* removing 'C:/Users/RUNNER~1/AppData/Local/Temp/RtmpiAXdl6/Rinstab02f562d08/asmcjr'
+
+      -----------------------------------
+
+ERROR: package installation failed
+
+##[error]Error in proc$get_built_file() : Build process failed
+Calls: &lt;Anonymous&gt; ... build_package -&gt; with_envvar -&gt; force -&gt; &lt;Anonymous&gt;
+Execution halted
+##[error]Process completed with exit code 1.
+</code></pre>
+</div>
+</div>
+<div id="windows-latest" class="section level2">
+<h2 class="hasAnchor">
+<a href="#windows-latest" class="anchor"></a>Windows-latest</h2>
+<div id="r-4-0-1" class="section level4">
+<h4 class="hasAnchor">
+<a href="#r-4-0-1" class="anchor"></a><a href="https://cran.r-project.org/"><em>R</em></a> 4.0</h4>
 <pre><code>* checking for file 'D:\a\asmcjr\asmcjr/DESCRIPTION' ... OK
 
 * preparing 'asmcjr':
