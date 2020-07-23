@@ -54,13 +54,23 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172937037-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-172937037-1');
+</script>
+
 
   </head>
 
   <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -71,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">asmcjr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
       </span>
     </div>
 
@@ -79,25 +89,52 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fa fa-home"></span>
      
   </a>
 </li>
-<li>
-  <a href="../articles/asmcjr.html">Get started</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    How To
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/installation.html">Installation</a>
+    </li>
+    <li>
+      <a href="../articles/errors.html">Potential Installation Errors</a>
+    </li>
+    <li>
+      <a href="../articles/support.html">Support</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../articles/examples.html">Examples of Use</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/davidaarmstrong/asmcjr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="../news/index.html">
+    <span class="fa fa-newspaper-o"></span>
      
+    news
+  </a>
+</li>
+<li>
+  <a href="../reference/index.html">
+    <span class="fa fa-file-code-o"></span>
+     
+    functions
+  </a>
+</li>
+<li>
+  <a href="https://github.com/yl17124/asmcjr">
+    <span class="fa fa-github fa-lg"></span>
+     
+    
   </a>
 </li>
       </ul>
@@ -117,13 +154,6 @@
       <small>Source: <a href='https://github.com/davidaarmstrong/asmcjr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="asmcjr-100" class="section level1">
-<h1 class="page-header" data-toc-text="1.0.0">
-<a href="#asmcjr-100" class="anchor"></a>asmcjr 1.0.0</h1>
-<ul>
-<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-</ul>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -137,11 +167,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://www.essex.ac.uk/people/carro40801/royce-carroll'>Dave Armstrong</a>, <a href='https://www.essex.ac.uk/people/carro40801/royce-carroll'>Royce Carroll</a>, Chris Hare, <a href='https://www.essex.ac.uk/people/bakke28107/ryan-bakker'>Ryan Bakker</a>.</p>
+  <p>Developed by <a href='https://github.com/davidaarmstrong'>Dave Armstrong</a>, <a href='https://www.essex.ac.uk/people/carro40801/royce-carroll'>Royce Carroll</a>, <a href='https://www.christopherdhare.com/'>Chris Hare</a>, <a href='https://www.essex.ac.uk/people/bakke28107/ryan-bakker'>Ryan Bakker</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
