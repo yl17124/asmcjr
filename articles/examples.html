@@ -94,7 +94,7 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/yl17124/asmcjr">
+  <a href="https://github.com/uniofessex/asmcjr">
     <span class="fa fa-github fa-lg"></span>
      
     
@@ -134,7 +134,7 @@
 <img src="https://raw.githack.com/yl17124/asmcjr/master/vignettes/first_example_df1.png"></p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">asmcjr</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/davidaarmstrong/asmcjr">asmcjr</a></span>)
 <span class="fu">aldmck</span>(<span class="kw">franceEES2009</span>, respondent=<span class="fl">1</span>,
        polarity = <span class="fl">2</span>,missing = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">77</span>,<span class="fl">88</span>,<span class="fl">89</span>), verbose = <span class="fl">FALSE</span>) <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>()                       
@@ -143,12 +143,12 @@
 <img width="650" height="270" src="https://raw.githack.com/yl17124/asmcjr/master/vignettes/first_example_df2.png"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">asmcjr</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/davidaarmstrong/asmcjr">asmcjr</a></span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
 <span class="fu">aldmck</span>(<span class="kw">franceEES2009</span>, respondent=<span class="fl">1</span>,
        polarity = <span class="fl">2</span>,missing = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">77</span>,<span class="fl">88</span>,<span class="fl">89</span>), verbose = <span class="fl">FALSE</span>) <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/asmcjr/man/ggplot.resphist.html">ggplot.resphist</a></span>(addStim = <span class="fl">TRUE</span>, weights = <span class="st">"negative"</span>, xlab = <span class="st">"Left-Right"</span>) <span class="op">+</span>
+  <span class="fu">ggplot.resphist</span>(addStim = <span class="fl">TRUE</span>, weights = <span class="st">"negative"</span>, xlab = <span class="st">"Left-Right"</span>) <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(legend.position = <span class="st">"bottom"</span>, aspect.ratio = <span class="fl">1</span>) <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span>(shape = <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span>(override.aes = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(size = <span class="fl">4</span>),nrow = <span class="fl">3</span>)) <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(shape = <span class="st">"Party"</span>, colour = <span class="st">"Party"</span>)
