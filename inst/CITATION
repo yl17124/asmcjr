@@ -1,7 +1,7 @@
 citHeader("To cite 'asmcjr' in publications use:")
 
 citEntry(entry = "Manual",
-  title = "asmcjr: An R package for the book '2nd Edition Analyzing Spatial Models of Choice and Judgment'",
+  title = "asmcjr: An R package for the book 2nd Edition Analyzing Spatial Models of Choice and Judgment",
   author = personList(as.person("David A. Armstrong"),
                       as.person("Christopher Hare"),
                       as.person("Ryan Bakker"),
