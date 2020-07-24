@@ -10,8 +10,15 @@ This package supports the book ["2nd Edition Analyzing Spatial Models of Choice 
 
 <br />
 <img src="https://raw.githack.com/yl17124/asmcjr/master/vignettes/book_image.jpg" width="200" align="center" />  
-
 &nbsp;
+
+#### Installation
+
+```
+install.packages("devtools", dependencies=TRUE)
+library(devtools)
+devtools::install_github("yl17124/asmcjr")
+```
 
 #### Reference
 
