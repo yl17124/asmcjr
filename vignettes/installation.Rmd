@@ -22,7 +22,7 @@ Before installing __asmcjr__ in [R](), please make sure you have those steps fin
 ```
 install.packages("devtools", dependencies=TRUE)
 library(devtools)
-devtools::install_github("yl17124/asmcjr")
+devtools::install_github("uniofessex/asmcjr")
 ```
 
 
@@ -33,6 +33,6 @@ devtools::install_github("yl17124/asmcjr")
 ```
 install.packages("devtools", dependencies=TRUE)
 library(devtools)
-devtools::install_github("yl17124/asmcjr")
+devtools::install_github("uniofessex/asmcjr")
 ```
 
