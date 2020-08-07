@@ -32,7 +32,8 @@ navbar:
   left:
     - icon: fa-home
       href: index.html
-    - text: "How To"
+    - icon: fa-rocket
+      text: "How To"
       menu: 
       -  text: "Installation"
          href: articles/installation.html
@@ -40,7 +41,8 @@ navbar:
          href: articles/errors.html
       -  text: "Support"
          href: articles/support.html
-    - text: "Examples of Use"
+    - icon: fa-project-diagram
+      text: "Examples of Use"
       href: articles/examples.html
 
 
@@ -52,7 +54,7 @@ navbar:
       text: "functions"
       href: reference/index.html
     - icon: fa-github fa-lg
-      text: ""
+      text: "GitHub"
       href: https://github.com/uniofessex/asmcjr
       
    
