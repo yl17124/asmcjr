@@ -104,6 +104,8 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-rocket"></span>
+     
     How To
      
     <span class="caret"></span>
@@ -121,7 +123,11 @@
   </ul>
 </li>
 <li>
-  <a href="../articles/examples.html">Examples of Use</a>
+  <a href="../articles/examples.html">
+    <span class="fa fa-project-diagram"></span>
+     
+    Examples of Use
+  </a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -143,7 +149,7 @@
   <a href="https://github.com/uniofessex/asmcjr">
     <span class="fa fa-github fa-lg"></span>
      
-    
+    GitHub
   </a>
 </li>
       </ul>
