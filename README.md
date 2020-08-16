@@ -11,7 +11,7 @@ This package supports the book ["2nd Edition Analyzing Spatial Models of Choice 
 &nbsp;
 
 #### Installation
-You will need to lastest installation of [_R_](https://cran.r-project.org/mirrors.html) (preferably version 3.6 or above) and [RStudio](https://rstudio.com/products/rstudio/download/#download).  Visit [Installation](articles/installation.html) for further instructions.
+You will need lastest installation of [_R_](https://cran.r-project.org/mirrors.html) (preferably version 3.6 or above) and [RStudio](https://rstudio.com/products/rstudio/download/#download).  Visit [Installation](articles/installation.html) for further instructions.
 
 ```
 install.packages("devtools", dependencies=TRUE)
