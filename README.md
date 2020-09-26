@@ -4,6 +4,8 @@
 ![R-CMD-check](https://github.com/yl17124/asmcjr/workflows/R-CMD-check/badge.svg?branch=master&event=check_run)
 [![codecov](https://codecov.io/gh/yl17124/asmcjr/branch/master/graph/badge.svg)](https://codecov.io/gh/yl17124/asmcjr)
 
+### ___Please temporarily email [David Liao]() or creat issues on this repo if you know of bugs and issues___.
+
 This package supports the book ["2nd Edition Analyzing Spatial Models of Choice and Judgment "](https://www.routledge.com/Analyzing-Spatial-Models-of-Choice-and-Judgment/II-Bakker-Carroll-Hare-Poole-Rosenthal/p/book/9781138715332).  In its second edition, much of the R code has been streamlined. This package contains all of the data and functions to replicate the analyses in the book. 
 
 <br />
@@ -13,6 +15,7 @@ This package supports the book ["2nd Edition Analyzing Spatial Models of Choice 
 #### Installation
 You will need lastest installation of [_R_](https://cran.r-project.org/mirrors.html) (preferably version 3.6 or above) and [RStudio](https://rstudio.com/products/rstudio/download/#download).  Visit [Installation](articles/installation.html) for further instructions.
 
+
 ```
 install.packages("devtools", dependencies=TRUE)
 library(devtools)
@@ -20,6 +23,5 @@ devtools::install_github("uniofessex/asmcjr")
 ```
 
 #### Reference
-
 For citation from this book, run `citation("asmcjr")`.  
 
