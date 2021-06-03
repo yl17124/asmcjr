@@ -21,18 +21,6 @@ library(devtools)
 devtools::install_github("uniofessex/asmcjr")
 ```
 
-## Support
-
-
-
-<p align="center">
-<iframe
-  src="https://essexsummerschool.com"
-  style="width:100%; height:350px;"
-></iframe>
-</p>
-
-
 
 ## Reference
 For citation from this book, run `citation("asmcjr")`.  

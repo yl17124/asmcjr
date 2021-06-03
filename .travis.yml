@@ -23,3 +23,4 @@ r_packages:
 # only report codecov after build is successful
 after_success:
   - Rscript -e 'covr::codecov()'
+
